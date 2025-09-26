@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - HealthFit Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00a859;
+            --primary-light: #4cd964;
+            --primary-dark: #008248;
+            --secondary: #ff6b6b;
+            --accent: #ff9f43;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --gray: #dfe6e9;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --success: #27ae60;
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 14px;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 5%;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-actions a {
+            margin-left: 15px;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .header-actions a:hover {
+            color: var(--primary);
+        }
+
+        /* Banner */
+        .banner {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Success Section */
+        .success-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .success-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .order-number {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .order-number strong {
+            color: var(--primary);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 15px;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .summary-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .summary-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .summary-content {
+            padding: 25px;
+        }
+
+        .summary-section {
+            margin-bottom: 30px;
+        }
+
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .order-items {
+            margin-bottom: 20px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .item-name {
+            font-weight: 600;
+        }
+
+        .item-quantity {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .summary-totals {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .total-line.final {
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-top: 1px solid var(--gray);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* Delivery Info */
+        .delivery-info {
+            background: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .delivery-title {
+            font-weight: 600;
+            color: var(--success);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .delivery-title i {
+            margin-right: 10px;
+        }
+
+        .delivery-time {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 10px 0;
+        }
+
+        /* Important Notice */
+        .important-notice {
+            background: #fff3e0;
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .notice-title {
+            font-weight: 600;
+            color: var(--warning);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .notice-title i {
+            margin-right: 10px;
+        }
+
+        /* Customer Info */
+        .customer-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-group {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #b2bec3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b2bec3;
+            font-size: 0.9rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .success-title {
+                font-size: 2rem;
+            }
+            
+            .customer-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .success-title {
+                font-size: 1.8rem;
+            }
+            
+            .summary-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Free Delivery Banner -->
+    <div class="banner">
+        <i class="fas fa-shipping-fast"></i> FREE DELIVERY COUNTRYWIDE FOR ORDERS ABOVE $100
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat logo-icon"></i>
+                <h1>HealthFit Pro</h1>
+            </a>
+            
+            <div class="header-actions">
+                <a href="index.html">
+                    <i class="fas fa-store"></i> 
+                    <span>Continue Shopping</span>
+                </a>
+                <a href="contact.html">
+                    <i class="fas fa-headset"></i> 
+                    <span>Contact Support</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Success Section -->
+    <div class="success-section">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1 class="success-title">Order Confirmed!</h1>
+        <p class="success-subtitle">Thank you for your purchase. Your order has been successfully placed.</p>
+        
+        <div class="order-number">
+            Order Number: <strong id="orderNumber">HF-000000</strong>
+        </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+        <div class="summary-card">
+            <div class="summary-header">
+                <h2>Order Summary</h2>
+                <p>Order placed on <span id="orderDate">Loading...</span></p>
+            </div>
+            
+            <div class="summary-content">
+                <!-- Order Items -->
+                <div class="summary-section">
+                    <h3 class="section-title">Order Items</h3>
+                    <div class="order-items" id="orderItems">
+                        <!-- Order items will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="summary-totals">
+                        <div class="total-line">
+                            <span>Subtotal:</span>
+                            <span id="summarySubtotal">$0.00</span>
+                        </div>
+                        <div class="total-line">
+                            <span>Shipping:</span>
+                            <span id="summaryShipping">$0.00</span>
+                        </div>
+                        <div class="total-line final">
+                            <span>Total:</span>
+                            <span id="summaryTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery Information -->
+                <div class="delivery-info">
+                    <div class="delivery-title">
+                        <i class="fas fa-truck"></i> Delivery Information
+                    </div>
+                    <p>Your order will be processed and shipped within 24-48 hours.</p>
+                    <div class="delivery-time">
+                        Estimated Delivery: 3-5 business days
+                    </div>
+                    <p>You will receive a tracking number via email once your order ships.</p>
+                </div>
+
+                <!-- Important Notice -->
+                <div class="important-notice">
+                    <div class="notice-title">
+                        <i class="fas fa-exclamation-triangle"></i> Important Notice
+                    </div>
+                    <p><strong>Please note:</strong> Due to high demand and careful quality control, we are unable to process refund requests within the first 5 days after purchase.</p>
+                    <p>If you have any concerns about your order, please allow the full delivery timeframe to pass before contacting our support team. We appreciate your patience and understanding.</p>
+                </div>
+
+                <!-- Customer Information -->
+                <div class="summary-section">
+                    <h3 class="section-title">Customer & Shipping Information</h3>
+                    <div class="customer-info">
+                        <div>
+                            <div class="info-group">
+                                <div class="info-label">Customer Name</div>
+                                <div class="info-value" id="customerName">Loading...</div>
+                            </div>
+                            <div class="info-group">
+                                <div class="info-label">Email Address</div>
+                                <div class="info-value" id="customerEmail">Loading...</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="info-group">
+                                <div class="info-label">Phone Number</div>
+                                <div class="info-value" id="customerPhone">Loading...</div>
+                            </div>
+                            <div class="info-group">
+                                <div class="info-label">Shipping Address</div>
+                                <div class="info-value" id="shippingAddress">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="index.html" class="btn btn-primary">
+            <i class="fas fa-shopping-bag"></i> Continue Shopping
+        </a>
+        <a href="contact.html" class="btn btn-outline">
+            <i class="fas fa-headset"></i> Contact Support
+        </a>
+        <button class="btn btn-outline" onclick="window.print()">
+            <i class="fas fa-print"></i> Print Receipt
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>HealthFit Pro</h3>
+                <p>Your trusted partner in health and wellness. We provide premium products to help you achieve your fitness goals.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">All Products</a></li>
+                    <li><a href="index.html#weight-loss">Weight Loss</a></li>
+                    <li><a href="index.html#beauty">Beauty</a></li>
+                    <li><a href="index.html#supplements">Supplements</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 HealthFit Pro. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Get the latest order from sessionStorage
+        function getLatestOrder() {
+            const orders = JSON.parse(sessionStorage.getItem('healthfit_orders') || '[]');
+            return orders.length > 0 ? orders[orders.length - 1] : null;
+        }
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(amount);
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Generate order number
+        function generateOrderNumber() {
+            return 'HF-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        }
+
+        // Display order summary
+        function displayOrderSummary() {
+            const order = getLatestOrder();
+            
+            if (!order) {
+                // No order found, redirect to home page
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Set order number and date
+            document.getElementById('orderNumber').textContent = order.orderNumber || generateOrderNumber();
+            document.getElementById('orderDate').textContent = formatDate(order.orderDate);
+
+            // Set customer information
+            document.getElementById('customerName').textContent = order.customerName;
+            document.getElementById('customerEmail').textContent = order.customerEmail;
+            document.getElementById('customerPhone').textContent = order.customerPhone;
+            document.getElementById('shippingAddress').textContent = order.shippingAddress;
+
+            // Calculate totals
+            const subtotal = order.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 100 ? 0 : 9.99;
+            const total = subtotal + shipping;
+
+            // Display order items
+            const orderItemsContainer = document.getElementById('orderItems');
+            orderItemsContainer.innerHTML = order.cart.map(item => `
+                <div class="order-item">
+                    <div class="item-info">
+                        <img src="${item.image}" alt="${item.name}" class="item-image" 
+                             onerror="this.src='https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
+                        <div>
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-quantity">Quantity: ${item.quantity}</div>
+                        </div>
+                    </div>
+                    <div class="item-price">${formatCurrency(item.price * item.quantity)}</div>
+                </div>
+            `).join('');
+
+            // Display totals
+            document.getElementById('summarySubtotal').textContent = formatCurrency(subtotal);
+            document.getElementById('summaryShipping').textContent = shipping === 0 ? 'FREE' : formatCurrency(shipping);
+            document.getElementById('summaryTotal').textContent = formatCurrency(total);
+
+            // Add order number to the order data if not present
+            if (!order.orderNumber) {
+                order.orderNumber = document.getElementById('orderNumber').textContent;
+                const orders = JSON.parse(sessionStorage.getItem('healthfit_orders') || '[]');
+                if (orders.length > 0) {
+                    orders[orders.length - 1] = order;
+                    sessionStorage.setItem('healthfit_orders', JSON.stringify(orders));
+                }
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderSummary();
+            
+            // Clear any existing cart since order is complete
+            sessionStorage.removeItem('healthfit_cart');
+        });
+
+        // Print functionality
+        window.onbeforeprint = function() {
+            document.querySelector('.action-buttons').style.display = 'none';
+        };
+
+        window.onafterprint = function() {
+            document.querySelector('.action-buttons').style.display = 'flex';
+        };
+    </script>
+</body>
+</html>
