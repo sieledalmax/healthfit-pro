@@ -1043,370 +1043,360 @@
     </div>
 
     <script>
-        // Paystack configuration
-        const paystackPublicKey = 'pk_test_50f796e5105a79f318cf2e6edbf73da1d7ce8608';
+    // Paystack configuration
+    const paystackPublicKey = 'pk_test_50f796e5105a79f318cf2e6edbf73da1d7ce8608';
 
-        // Show loading overlay
-        function showLoading(message = "Processing...") {
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.querySelector('.loading-text').textContent = message;
-            overlay.classList.add('active');
-        }
+    // Show loading overlay
+    function showLoading(message = "Processing...") {
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.querySelector('.loading-text').textContent = message;
+        overlay.classList.add('active');
+    }
 
-        // Hide loading overlay
-        function hideLoading() {
-            document.getElementById('loadingOverlay').classList.remove('active');
-        }
+    // Hide loading overlay
+    function hideLoading() {
+        document.getElementById('loadingOverlay').classList.remove('active');
+    }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            displayCartItems();
-            updateCartCount();
-            
-            // Add event listeners
-            document.getElementById('checkoutBtn').addEventListener('click', checkout);
-            document.getElementById('cancelCheckoutBtn').addEventListener('click', closeCheckoutModal);
-            document.getElementById('checkoutForm').addEventListener('submit', completeOrder);
-            document.getElementById('paymentOkBtn').addEventListener('click', function() {
-                document.getElementById('paymentModal').classList.remove('show');
-            });
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        displayCartItems();
+        
+        // Add event listeners
+        document.getElementById('checkoutBtn').addEventListener('click', checkout);
+        document.getElementById('cancelCheckoutBtn').addEventListener('click', closeCheckoutModal);
+        document.getElementById('checkoutForm').addEventListener('submit', completeOrder);
+        document.getElementById('paymentOkBtn').addEventListener('click', function() {
+            document.getElementById('paymentModal').classList.remove('show');
         });
+    });
 
-        // Cart Management
-        function getCartFromStorage() {
-            const cartJson = sessionStorage.getItem('healthfit_cart');
-            return cartJson ? JSON.parse(cartJson) : [];
-        }
+    // Cart Management
+    function getCartFromStorage() {
+        const cartJson = sessionStorage.getItem('healthfit_cart');
+        return cartJson ? JSON.parse(cartJson) : [];
+    }
 
-        function saveCartToStorage(cart) {
-            sessionStorage.setItem('healthfit_cart', JSON.stringify(cart));
-        }
+    function saveCartToStorage(cart) {
+        sessionStorage.setItem('healthfit_cart', JSON.stringify(cart));
+    }
 
-        function updateCartCount() {
+    function displayCartItems() {
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        
+        // Show loading state initially
+        cartItemsContainer.innerHTML = `
+            <div class="loading-state">
+                <i class="fas fa-spinner"></i>
+                <h3>Loading Cart...</h3>
+            </div>
+        `;
+        
+        // Simulate slight delay for better UX
+        setTimeout(() => {
             const cart = getCartFromStorage();
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
-        }
-
-        function displayCartItems() {
-            const cartItemsContainer = document.getElementById('cartItemsContainer');
             
-            // Show loading state initially
-            cartItemsContainer.innerHTML = `
-                <div class="loading-state">
-                    <i class="fas fa-spinner"></i>
-                    <h3>Loading Cart...</h3>
-                </div>
-            `;
-            
-            // Simulate slight delay for better UX
-            setTimeout(() => {
-                const cart = getCartFromStorage();
-                
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = `
-                        <div class="empty-state">
-                            <i class="fas fa-shopping-cart"></i>
-                            <h3>Your cart is empty</h3>
-                            <p>Looks like you haven't added any products to your cart yet.</p>
-                            <a href="index.html" class="btn btn-primary">Start Shopping</a>
-                            <a href="index.html#all" class="btn btn-outline" style="margin-top: 10px;">Browse All Products</a>
-                        </div>
-                    `;
-                    document.querySelector('.cart-summary').style.display = 'none';
-                } else {
-                    cartItemsContainer.innerHTML = `
-                        <div class="cart-header">
-                            <h2>Cart Items (${cart.length})</h2>
-                            <button class="btn btn-outline btn-small" onclick="clearCart()">Clear Cart</button>
-                        </div>
-                        <div class="persistence-notice show">
-                            <i class="fas fa-info-circle"></i> Your cart is saved automatically and will be available when you return.
-                        </div>
-                        ${cart.map(item => `
-                            <div class="cart-item">
-                                <img src="${item.image}" alt="${item.name}" class="cart-item-image" 
-                                     onerror="this.src='https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                                <div class="cart-item-info">
-                                    <div class="cart-item-name">${item.name}</div>
-                                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                                    <div class="cart-item-controls">
-                                        <div class="cart-quantity-control">
-                                            <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                                            <span>${item.quantity}</span>
-                                            <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
-                                        </div>
-                                        <button class="remove-item" onclick="removeFromCart(${item.id})">
-                                            <i class="fas fa-trash"></i> Remove
-                                        </button>
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Looks like you haven't added any products to your cart yet.</p>
+                        <a href="index.html" class="btn btn-primary">Start Shopping</a>
+                        <a href="index.html#all" class="btn btn-outline" style="margin-top: 10px;">Browse All Products</a>
+                    </div>
+                `;
+                document.querySelector('.cart-summary').style.display = 'none';
+            } else {
+                cartItemsContainer.innerHTML = `
+                    <div class="cart-header">
+                        <h2>Cart Items (${cart.length})</h2>
+                        <button class="btn btn-outline btn-small" onclick="clearCart()">Clear Cart</button>
+                    </div>
+                    <div class="persistence-notice show">
+                        <i class="fas fa-info-circle"></i> Your cart is saved automatically and will be available when you return.
+                    </div>
+                    ${cart.map(item => `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                                <div class="cart-item-controls">
+                                    <div class="cart-quantity-control">
+                                        <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
+                                        <span>${item.quantity}</span>
+                                        <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
                                     </div>
+                                    <button class="remove-item" onclick="removeFromCart(${item.id})">
+                                        <i class="fas fa-trash"></i> Remove
+                                    </button>
                                 </div>
                             </div>
-                        `).join('')}
-                    `;
-                    
-                    document.querySelector('.cart-summary').style.display = 'block';
-                    updateCartTotal();
-                }
-            }, 300);
-        }
-
-        function updateCartQuantity(productId, change) {
-            const cart = getCartFromStorage();
-            const item = cart.find(item => item.id === productId);
-            
-            if (item) {
-                item.quantity += change;
+                        </div>
+                    `).join('')}
+                `;
                 
-                // Add quantity limits
-                if (item.quantity <= 0) {
-                    removeFromCart(productId);
-                } else if (item.quantity > 99) {
-                    item.quantity = 99;
-                    showNotification('Maximum quantity reached (99)', 'error');
-                } else {
-                    saveCartToStorage(cart);
-                    displayCartItems();
-                    updateCartCount();
-                }
+                document.querySelector('.cart-summary').style.display = 'block';
+                updateCartTotal();
             }
-        }
+        }, 300);
+    }
 
-        function removeFromCart(productId) {
-            let cart = getCartFromStorage();
-            cart = cart.filter(item => item.id !== productId);
-            saveCartToStorage(cart);
-            displayCartItems();
-            updateCartCount();
-            showNotification('Item removed from cart');
-        }
-
-        function clearCart() {
-            if (confirm('Are you sure you want to clear your cart?')) {
-                sessionStorage.removeItem('healthfit_cart');
-                displayCartItems();
-                updateCartCount();
-                showNotification('Cart cleared');
-            }
-        }
-
-        function updateCartTotal() {
-            const cart = getCartFromStorage();
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shipping = subtotal >= 100 ? 0 : 9.99;
-            const total = subtotal + shipping;
+    function updateCartQuantity(productId, change) {
+        const cart = getCartFromStorage();
+        const item = cart.find(item => item.id === productId);
+        
+        if (item) {
+            item.quantity += change;
             
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-            
-            // Update free shipping progress
-            const freeShippingNotice = document.getElementById('freeShippingNotice');
-            const shippingProgressContainer = document.getElementById('shippingProgressContainer');
-            const shippingProgressBar = document.getElementById('shippingProgressBar');
-            const amountNeeded = document.getElementById('amountNeeded');
-            
-            if (subtotal >= 100) {
-                freeShippingNotice.classList.add('show');
-                shippingProgressContainer.style.display = 'none';
+            // Add quantity limits
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+            } else if (item.quantity > 99) {
+                item.quantity = 99;
+                showNotification('Maximum quantity reached (99)', 'error');
             } else {
-                freeShippingNotice.classList.remove('show');
-                shippingProgressContainer.style.display = 'block';
-                
-                const needed = 100 - subtotal;
-                amountNeeded.textContent = `$${needed.toFixed(2)}`;
-                
-                const progress = (subtotal / 100) * 100;
-                shippingProgressBar.style.width = `${progress}%`;
+                saveCartToStorage(cart);
+                displayCartItems();
             }
         }
+    }
 
-        // Checkout Process
-        function checkout() {
-            const cart = getCartFromStorage();
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!', 'error');
-                return;
-            }
-            
-            document.getElementById('checkoutModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
+    function removeFromCart(productId) {
+        let cart = getCartFromStorage();
+        cart = cart.filter(item => item.id !== productId);
+        saveCartToStorage(cart);
+        displayCartItems();
+        showNotification('Item removed from cart');
+    }
+
+    function clearCart() {
+        if (confirm('Are you sure you want to clear your cart?')) {
+            sessionStorage.removeItem('healthfit_cart');
+            displayCartItems();
+            showNotification('Cart cleared');
         }
+    }
 
-        function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.remove('show');
-            document.body.style.overflow = 'auto';
-            document.getElementById('checkoutForm').reset();
+    function updateCartTotal() {
+        const cart = getCartFromStorage();
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = subtotal >= 100 ? 0 : 9.99;
+        const total = subtotal + shipping;
+        
+        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        
+        // Update free shipping progress
+        const freeShippingNotice = document.getElementById('freeShippingNotice');
+        const shippingProgressContainer = document.getElementById('shippingProgressContainer');
+        const shippingProgressBar = document.getElementById('shippingProgressBar');
+        const amountNeeded = document.getElementById('amountNeeded');
+        
+        if (subtotal >= 100) {
+            freeShippingNotice.classList.add('show');
+            shippingProgressContainer.style.display = 'none';
+        } else {
+            freeShippingNotice.classList.remove('show');
+            shippingProgressContainer.style.display = 'block';
+            
+            const needed = 100 - subtotal;
+            amountNeeded.textContent = `$${needed.toFixed(2)}`;
+            
+            const progress = (subtotal / 100) * 100;
+            shippingProgressBar.style.width = `${progress}%`;
         }
+    }
 
-        // Initialize Paystack payment
-        function initializePaystackPayment(email, amount, callback) {
-            const handler = PaystackPop.setup({
-                key: paystackPublicKey,
-                email: email,
-                amount: amount * 100,
-                currency: 'USD',
-                ref: 'HF-' + Math.floor(Math.random() * 1000000000 + 1),
-                onClose: function() {
-                    callback('Payment window closed', null);
-                },
-                callback: function(response) {
-                    callback(null, response);
-                }
-            });
-            handler.openIframe();
+    // Checkout Process
+    function checkout() {
+        const cart = getCartFromStorage();
+        if (cart.length === 0) {
+            showNotification('Your cart is empty!', 'error');
+            return;
         }
+        
+        document.getElementById('checkoutModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
 
-        function completeOrder(event) {
-            event.preventDefault();
-            
-            const customerName = document.getElementById('customerName').value;
-            const customerEmail = document.getElementById('customerEmail').value;
-            const customerPhone = document.getElementById('customerPhone').value;
-            const shippingAddress = document.getElementById('shippingAddress').value;
-            const city = document.getElementById('city').value;
-            const zipcode = document.getElementById('zipcode').value;
-            const state = document.getElementById('state').value;
-            const specialInstructions = document.getElementById('specialInstructions').value;
-            
-            // Enhanced email validation
-            if (!isValidEmail(customerEmail)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-            
-            // Validate phone number
-            if (!isValidPhone(customerPhone)) {
-                showNotification('Please enter a valid phone number', 'error');
-                return;
-            }
-            
-            const cart = getCartFromStorage();
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shipping = subtotal >= 100 ? 0 : 9.99;
-            const total = subtotal + shipping;
-            
-            // Close checkout modal
-            closeCheckoutModal();
-            
-            // Show payment modal with spinner
-            const paymentModal = document.getElementById('paymentModal');
-            const paymentSpinner = document.getElementById('paymentSpinner');
-            const paymentMessage = document.getElementById('paymentMessage');
-            const paymentOkBtn = document.getElementById('paymentOkBtn');
-            
-            paymentModal.classList.add('show');
-            paymentMessage.textContent = 'Processing payment...';
-            paymentSpinner.style.display = 'block';
-            paymentOkBtn.style.display = 'none';
-            
-            // Initialize Paystack payment
-            initializePaystackPayment(customerEmail, total, 
-                async (error, response) => {
-                    if (error) {
-                        paymentMessage.textContent = error;
-                        paymentMessage.style.color = 'var(--danger)';
-                        paymentSpinner.style.display = 'none';
-                        paymentOkBtn.style.display = 'block';
-                        paymentOkBtn.onclick = function() {
-                            paymentModal.classList.remove('show');
-                        };
-                        return;
-                    }
+    function closeCheckoutModal() {
+        document.getElementById('checkoutModal').classList.remove('show');
+        document.body.style.overflow = 'auto';
+        document.getElementById('checkoutForm').reset();
+    }
 
-                    try {
-                        // Payment successful - save order details
-                        const orderData = {
-                            customerName: customerName,
-                            customerEmail: customerEmail,
-                            customerPhone: customerPhone,
-                            shippingAddress: shippingAddress,
-                            city: city,
-                            zipcode: zipcode,
-                            state: state,
-                            specialInstructions: specialInstructions,
-                            cart: cart,
-                            total: total,
-                            paymentReference: response.reference,
-                            status: 'paid',
-                            orderDate: new Date().toISOString(),
-                            orderNumber: 'HF-' + Math.random().toString(36).substr(2, 9).toUpperCase()
-                        };
-                        
-                        // Save order to sessionStorage (in real app, send to server)
-                        const orders = JSON.parse(sessionStorage.getItem('healthfit_orders') || '[]');
-                        orders.push(orderData);
-                        sessionStorage.setItem('healthfit_orders', JSON.stringify(orders));
-                        
-                        // Clear cart
-                        sessionStorage.removeItem('healthfit_cart');
-                        
-                        paymentMessage.textContent = 'Payment successful! Your order has been placed.';
-                        paymentMessage.style.color = 'var(--success)';
-                        paymentSpinner.style.display = 'none';
-                        paymentOkBtn.style.display = 'block';
-                        paymentOkBtn.onclick = function() {
-                            paymentModal.classList.remove('show');
-                            window.location.href = 'summary.html';
-                        };
-                        
-                        showNotification('Order placed successfully!');
-                        
-                    } catch (error) {
-                        paymentSpinner.style.display = 'none';
-                        paymentMessage.textContent = 'Order processing failed. Please contact support.';
-                        paymentMessage.style.color = 'var(--danger)';
-                        paymentOkBtn.style.display = 'block';
-                        paymentOkBtn.onclick = function() {
-                            paymentModal.classList.remove('show');
-                        };
-                        console.error('Order processing error:', error);
-                    }
-                });
-        }
-
-        // Utility Functions
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        function isValidPhone(phone) {
-            // Basic phone validation - at least 10 digits
-            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-            return phoneRegex.test(phone.replace(/[^\d+]/g, ''));
-        }
-
-        function showNotification(message, type = 'success') {
-            // Remove existing notification if any
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
-            const notification = document.createElement('div');
-            notification.className = `notification ${type === 'error' ? 'error' : ''}`;
-            notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${message}`;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            const checkoutModal = document.getElementById('checkoutModal');
-            const paymentModal = document.getElementById('paymentModal');
-            
-            if (event.target === checkoutModal) {
-                closeCheckoutModal();
-            }
-            if (event.target === paymentModal) {
-                paymentModal.classList.remove('show');
+    // Initialize Paystack payment
+    function initializePaystackPayment(email, amount, callback) {
+        const handler = PaystackPop.setup({
+            key: paystackPublicKey,
+            email: email,
+            amount: amount * 100,
+            currency: 'USD',
+            ref: 'HF-' + Math.floor(Math.random() * 1000000000 + 1),
+            onClose: function() {
+                callback('Payment window closed', null);
+            },
+            callback: function(response) {
+                callback(null, response);
             }
         });
-    </script>
+        handler.openIframe();
+    }
+
+    function completeOrder(event) {
+        event.preventDefault();
+        
+        const customerName = document.getElementById('customerName').value;
+        const customerEmail = document.getElementById('customerEmail').value;
+        const customerPhone = document.getElementById('customerPhone').value;
+        const shippingAddress = document.getElementById('shippingAddress').value;
+        const city = document.getElementById('city').value;
+        const zipcode = document.getElementById('zipcode').value;
+        const state = document.getElementById('state').value;
+        const specialInstructions = document.getElementById('specialInstructions').value;
+        
+        // Enhanced email validation
+        if (!isValidEmail(customerEmail)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+        
+        // Validate phone number
+        if (!isValidPhone(customerPhone)) {
+            showNotification('Please enter a valid phone number', 'error');
+            return;
+        }
+        
+        const cart = getCartFromStorage();
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = subtotal >= 100 ? 0 : 9.99;
+        const total = subtotal + shipping;
+        
+        // Close checkout modal
+        closeCheckoutModal();
+        
+        // Show payment modal with spinner
+        const paymentModal = document.getElementById('paymentModal');
+        const paymentSpinner = document.getElementById('paymentSpinner');
+        const paymentMessage = document.getElementById('paymentMessage');
+        const paymentOkBtn = document.getElementById('paymentOkBtn');
+        
+        paymentModal.classList.add('show');
+        paymentMessage.textContent = 'Processing payment...';
+        paymentSpinner.style.display = 'block';
+        paymentOkBtn.style.display = 'none';
+        
+        // Initialize Paystack payment
+        initializePaystackPayment(customerEmail, total, 
+            async (error, response) => {
+                if (error) {
+                    paymentMessage.textContent = error;
+                    paymentMessage.style.color = 'var(--danger)';
+                    paymentSpinner.style.display = 'none';
+                    paymentOkBtn.style.display = 'block';
+                    paymentOkBtn.onclick = function() {
+                        paymentModal.classList.remove('show');
+                    };
+                    return;
+                }
+
+                try {
+                    // Payment successful - save order details
+                    const orderData = {
+                        customerName: customerName,
+                        customerEmail: customerEmail,
+                        customerPhone: customerPhone,
+                        shippingAddress: shippingAddress,
+                        city: city,
+                        zipcode: zipcode,
+                        state: state,
+                        specialInstructions: specialInstructions,
+                        cart: cart,
+                        total: total,
+                        paymentReference: response.reference,
+                        status: 'paid',
+                        orderDate: new Date().toISOString(),
+                        orderNumber: 'HF-' + Math.random().toString(36).substr(2, 9).toUpperCase()
+                    };
+                    
+                    // Save order to sessionStorage (in real app, send to server)
+                    const orders = JSON.parse(sessionStorage.getItem('healthfit_orders') || '[]');
+                    orders.push(orderData);
+                    sessionStorage.setItem('healthfit_orders', JSON.stringify(orders));
+                    
+                    // Clear cart
+                    sessionStorage.removeItem('healthfit_cart');
+                    
+                    paymentMessage.textContent = 'Payment successful! Your order has been placed.';
+                    paymentMessage.style.color = 'var(--success)';
+                    paymentSpinner.style.display = 'none';
+                    paymentOkBtn.style.display = 'block';
+                    paymentOkBtn.onclick = function() {
+                        paymentModal.classList.remove('show');
+                        window.location.href = 'summary.html';
+                    };
+                    
+                    showNotification('Order placed successfully!');
+                    
+                } catch (error) {
+                    paymentSpinner.style.display = 'none';
+                    paymentMessage.textContent = 'Order processing failed. Please contact support.';
+                    paymentMessage.style.color = 'var(--danger)';
+                    paymentOkBtn.style.display = 'block';
+                    paymentOkBtn.onclick = function() {
+                        paymentModal.classList.remove('show');
+                    };
+                    console.error('Order processing error:', error);
+                }
+            });
+    }
+
+    // Utility Functions
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function isValidPhone(phone) {
+        // Basic phone validation - at least 10 digits
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        return phoneRegex.test(phone.replace(/[^\d+]/g, ''));
+    }
+
+    function showNotification(message, type = 'success') {
+        // Remove existing notification if any
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        const notification = document.createElement('div');
+        notification.className = `notification ${type === 'error' ? 'error' : ''}`;
+        notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${message}`;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        const checkoutModal = document.getElementById('checkoutModal');
+        const paymentModal = document.getElementById('paymentModal');
+        
+        if (event.target === checkoutModal) {
+            closeCheckoutModal();
+        }
+        if (event.target === paymentModal) {
+            paymentModal.classList.remove('show');
+        }
+    });
+</script>
 </body>
 </html>
