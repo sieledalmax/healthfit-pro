@@ -42,7 +42,7 @@
         overflow-x: hidden;
     }
 
-    /* Header Styles - Matching main page */
+    /* Header Styles */
     header {
         background: white;
         box-shadow: var(--shadow);
@@ -158,7 +158,7 @@
         font-weight: 600;
     }
 
-    /* Navigation - Matching main page */
+    /* Navigation */
     nav {
         padding: 10px 0;
         border-top: 1px solid var(--gray);
@@ -201,7 +201,7 @@
         background: var(--primary);
     }
 
-    /* Banner - Matching main page */
+    /* Banner */
     .banner {
         background: var(--gradient);
         color: white;
@@ -209,13 +209,6 @@
         padding: 10px 15px;
         font-size: 0.85rem;
         font-weight: 600;
-    }
-
-    /* Container - Matching main page */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
     }
 
     /* Cart Page Styles */
@@ -415,7 +408,7 @@
         transition: width 0.5s;
     }
 
-    /* Buttons - Matching main page */
+    /* Buttons */
     .btn {
         display: inline-block;
         padding: 14px 28px;
@@ -466,7 +459,7 @@
         color: white;
     }
 
-    /* Loading State - Matching main page */
+    /* Loading State */
     .loading-state {
         text-align: center;
         padding: 60px 20px;
@@ -490,7 +483,7 @@
         100% { transform: rotate(360deg); }
     }
 
-    /* Empty State - Matching main page */
+    /* Empty State */
     .empty-state {
         text-align: center;
         padding: 60px 20px;
@@ -515,7 +508,7 @@
         margin-right: auto;
     }
 
-    /* Footer - Matching main page */
+    /* Footer */
     footer {
         background: var(--dark);
         color: white;
@@ -571,7 +564,7 @@
         padding-right: 15px;
     }
 
-    /* Notification - Matching main page */
+    /* Notification */
     .notification {
         position: fixed;
         top: 20px;
@@ -666,8 +659,11 @@
         background-color: white;
         border-radius: 12px;
         width: 85%;
-        max-width: 350px;
-        padding: 25px;
+        max-width: 500px;
+        max-height: 85vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         transform: translateY(20px);
         transition: transform 0.3s ease;
@@ -678,20 +674,21 @@
     }
 
     .modal-header {
-        text-align: center;
-        margin-bottom: 20px;
+        padding: 20px;
+        border-bottom: 1px solid var(--gray);
+        flex-shrink: 0;
     }
 
     .modal-body {
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 14px;
-        color: var(--text-light);
+        padding: 20px;
+        overflow-y: auto;
+        flex-grow: 1;
     }
 
     .modal-footer {
-        display: flex;
-        justify-content: center;
+        padding: 20px;
+        border-top: 1px solid var(--gray);
+        flex-shrink: 0;
     }
 
     .modal-btn {
@@ -722,96 +719,6 @@
 
     @keyframes spin {
         to { transform: rotate(360deg); }
-    }
-
-    /* Responsive - Matching main page */
-    @media (max-width: 768px) {
-        .mobile-menu-btn {
-            display: block;
-        }
-        
-        .search-bar {
-            display: none;
-        }
-        
-        .header-actions a span, .header-actions button span {
-            display: none;
-        }
-        
-        /* Fix for cart count in mobile view */
-        .header-actions a {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
-        .cart-item {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .cart-item-image {
-            width: 100%;
-            height: 200px;
-            margin-right: 0;
-            margin-bottom: 15px;
-        }
-        
-        .cart-item-controls {
-            width: 100%;
-            justify-content: space-between;
-        }
-        
-        .cart-quantity-control {
-            margin-right: 0;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .cart-item-controls {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .cart-quantity-control {
-            align-self: stretch;
-            justify-content: space-between;
-        }
-        
-        .remove-item {
-            align-self: flex-end;
-        }
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
     }
 
     /* Form Styles for Checkout Modal */
@@ -853,8 +760,47 @@
     }
     
     @media (max-width: 768px) {
+        .mobile-menu-btn {
+            display: block;
+        }
+        
+        .search-bar {
+            display: none;
+        }
+        
+        .header-actions a span, .header-actions button span {
+            display: none;
+        }
+        
+        /* FIX: Ensure cart count is always visible in mobile view */
+        .header-actions a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex !important; /* Force display */
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
         .modal {
-            padding: 20px;
+            padding: 0;
+            width: 95%;
         }
         
         .form-actions {
@@ -863,6 +809,34 @@
         
         .form-actions button {
             width: 100%;
+        }
+        
+        .cart-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .cart-item-image {
+            width: 100%;
+            height: 200px;
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        
+        .cart-item-controls {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
         }
     }
 </style>
@@ -881,11 +855,15 @@
                 <h1>HealthFit Pro</h1>
             </a>
             
+            <div class="search-bar">
+                <input type="text" placeholder="Search products..." id="searchInput">
+                <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+            </div>
             
             <div class="header-actions">
                 <a href="index.html">
-                    <i class="fas fa-store"></i> 
-                    <span>Continue Shopping</span>
+                    <i class="fas fa-home"></i> 
+                    <span>Shopping</span>
                 </a>
                 <a href="login.html">
                     <i class="fas fa-user"></i> 
@@ -893,6 +871,17 @@
                 </a>
             </div>
         </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">All Products</a></li>
+                <li><a href="index.html#weight-loss">Weight Loss</a></li>
+                <li><a href="index.html#beauty">Beauty</a></li>
+                <li><a href="index.html#supplements">Supplements</a></li>
+                <li><a href="index.html#vitamins">Vitamins</a></li>
+                <li><a href="index.html#fitness">Fitness</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Loading Overlay -->
@@ -939,7 +928,7 @@
                     <span id="total">$9.99</span>
                 </div>
                 
-                <button class="btn btn-primary btn-full" onclick="checkout()">Proceed to Checkout</button>
+                <button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button>
                 <a href="index.html" class="btn btn-outline btn-full" style="margin-top: 15px; text-align: center;">Continue Shopping</a>
             </div>
         </div>
@@ -987,29 +976,53 @@
     <!-- Checkout Modal -->
     <div class="modal-overlay" id="checkoutModal">
         <div class="modal">
-            <h2 style="margin-bottom: 20px; color: var(--primary);">Checkout</h2>
-            <form onsubmit="completeOrder(event)">
-                <div class="form-group">
-                    <label>Customer Name</label>
-                    <input type="text" id="customerName" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="customerEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" id="customerPhone" required>
-                </div>
-                <div class="form-group">
-                    <label>Shipping Address</label>
-                    <textarea id="shippingAddress" rows="3" required></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Proceed to Payment</button>
-                </div>
-            </form>
+            <div class="modal-header">
+                <h2 style="color: var(--primary);">Checkout</h2>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Shipping Address</label>
+                        <input id="shippingAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <div style="display: flex; gap: 15px;">
+                            <div style="flex: 1;">
+                                <label>City</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div style="flex: 1;">
+                                <label>Zip Code</label>
+                                <input type="number" id="zipcode" required maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>State</label>
+                        <input type="text" id="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions (Optional)</label>
+                        <textarea id="specialInstructions" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelCheckoutBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -1049,6 +1062,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             displayCartItems();
             updateCartCount();
+            
+            // Add event listeners
+            document.getElementById('checkoutBtn').addEventListener('click', checkout);
+            document.getElementById('cancelCheckoutBtn').addEventListener('click', closeCheckoutModal);
+            document.getElementById('checkoutForm').addEventListener('submit', completeOrder);
+            document.getElementById('paymentOkBtn').addEventListener('click', function() {
+                document.getElementById('paymentModal').classList.remove('show');
+            });
         });
 
         // Cart Management
@@ -1215,7 +1236,7 @@
         function closeCheckoutModal() {
             document.getElementById('checkoutModal').classList.remove('show');
             document.body.style.overflow = 'auto';
-            document.querySelector('#checkoutModal form').reset();
+            document.getElementById('checkoutForm').reset();
         }
 
         // Initialize Paystack payment
@@ -1243,10 +1264,20 @@
             const customerEmail = document.getElementById('customerEmail').value;
             const customerPhone = document.getElementById('customerPhone').value;
             const shippingAddress = document.getElementById('shippingAddress').value;
+            const city = document.getElementById('city').value;
+            const zipcode = document.getElementById('zipcode').value;
+            const state = document.getElementById('state').value;
+            const specialInstructions = document.getElementById('specialInstructions').value;
             
             // Enhanced email validation
             if (!isValidEmail(customerEmail)) {
                 showNotification('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            // Validate phone number
+            if (!isValidPhone(customerPhone)) {
+                showNotification('Please enter a valid phone number', 'error');
                 return;
             }
             
@@ -1290,6 +1321,10 @@
                             customerEmail: customerEmail,
                             customerPhone: customerPhone,
                             shippingAddress: shippingAddress,
+                            city: city,
+                            zipcode: zipcode,
+                            state: state,
+                            specialInstructions: specialInstructions,
                             cart: cart,
                             total: total,
                             paymentReference: response.reference,
@@ -1336,6 +1371,12 @@
             return emailRegex.test(email);
         }
 
+        function isValidPhone(phone) {
+            // Basic phone validation - at least 10 digits
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[^\d+]/g, ''));
+        }
+
         function showNotification(message, type = 'success') {
             // Remove existing notification if any
             const existingNotification = document.querySelector('.notification');
@@ -1353,62 +1394,6 @@
                 notification.remove();
             }, 3000);
         }
-
-        // Modal styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .form-group {
-                margin-bottom: 20px;
-            }
-            
-            .form-group label {
-                display: block;
-                margin-bottom: 8px;
-                font-weight: 600;
-                color: var(--dark);
-            }
-            
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                width: 100%;
-                padding: 12px 15px;
-                border: 1px solid var(--gray);
-                border-radius: 8px;
-                font-size: 0.95rem;
-                transition: border-color 0.3s;
-            }
-            
-            .form-group input:focus,
-            .form-group select:focus,
-            .form-group textarea:focus {
-                outline: none;
-                border-color: var(--primary);
-                box-shadow: 0 0 0 2px rgba(0, 168, 89, 0.2);
-            }
-            
-            .form-actions {
-                display: flex;
-                gap: 15px;
-                justify-content: flex-end;
-                margin-top: 25px;
-            }
-            
-            @media (max-width: 768px) {
-                .modal {
-                    padding: 20px;
-                }
-                
-                .form-actions {
-                    flex-direction: column;
-                }
-                
-                .form-actions button {
-                    width: 100%;
-                }
-            }
-        `;
-        document.head.appendChild(style);
 
         // Close modal when clicking outside
         window.addEventListener('click', function(event) {

@@ -803,14 +803,15 @@
         
         /* Fix for quantity selector in mobile view */
         .product-price-quantity {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
         }
         
         .product-quantity {
             margin-top: 0;
             flex-shrink: 0;
+            align-self: flex-start;
         }
         
         .product-actions {
@@ -1050,13 +1051,58 @@
         let products = [];
         let currentProductDetail = null;
         let detailQuantity = 1;
+        let backButtonPressed = false;
+        let backButtonTimer = null;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
             updateCartCount();
             loadCartFromStorage();
+            
+            // Set up back button handling
+            setupBackButtonHandling();
         });
+
+        // Set up back button handling for modal and page exit
+        function setupBackButtonHandling() {
+            window.addEventListener('popstate', function(event) {
+                const modal = document.getElementById('productDetailModal');
+                
+                // If modal is open, close it and prevent navigation
+                if (modal.style.display === 'block') {
+                    closeProductDetail();
+                    // Push a new state to prevent the back button from navigating away
+                    history.pushState(null, null, window.location.href);
+                    return;
+                }
+                
+                // If modal is not open, handle double back button press
+                if (!backButtonPressed) {
+                    backButtonPressed = true;
+                    
+                    // Show notification
+                    showNotification('Press back again to leave');
+                    
+                    // Reset after 2 seconds
+                    if (backButtonTimer) clearTimeout(backButtonTimer);
+                    backButtonTimer = setTimeout(() => {
+                        backButtonPressed = false;
+                    }, 2000);
+                    
+                    // Push a new state to prevent the back button from navigating away
+                    history.pushState(null, null, window.location.href);
+                } else {
+                    // User pressed back twice, allow navigation
+                    backButtonPressed = false;
+                    if (backButtonTimer) clearTimeout(backButtonTimer);
+                    // Let the browser handle the navigation
+                }
+            });
+            
+            // Push initial state
+            history.pushState(null, null, window.location.href);
+        }
 
         // Load products from JSON file
         async function loadProducts() {
@@ -1173,6 +1219,9 @@
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
             
+            // Push a new state to the history when opening modal
+            history.pushState({ modalOpen: true }, null, window.location.href);
+            
             document.getElementById('detailImage').src = product.image;
             document.getElementById('detailImage').alt = product.name;
             document.getElementById('detailCategory').textContent = formatCategory(product.category);
@@ -1200,6 +1249,9 @@
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
             currentProductDetail = null;
+            
+            // Push a new state when closing modal
+            history.pushState(null, null, window.location.href);
         }
 
         function updateDetailQuantity(change) {
