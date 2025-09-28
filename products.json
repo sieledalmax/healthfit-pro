@@ -6,7 +6,7 @@
       "category": "weight-loss",
       "price": 29.99,
       "description": "Advanced formula with natural extracts to boost metabolism and support weight management. Contains green tea extract, caffeine, and other natural ingredients that help increase energy expenditure and fat oxidation.",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/slimming_tea.jpg",
       "stock": 50,
       "benefits": ["Boosts metabolism", "Increases energy", "Supports fat burning", "Natural ingredients"]
     },
@@ -16,7 +16,7 @@
       "category": "weight-loss",
       "price": 39.99,
       "description": "Specifically formulated to support ketogenic diet and accelerate fat burning. Contains exogenous ketones, MCT oil, and electrolytes to help your body transition into ketosis faster.",
-      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/detox_tea.jpg",
       "stock": 25,
       "benefits": ["Supports ketosis", "Reduces keto flu symptoms", "Accelerates fat burning", "Increases energy"]
     },
@@ -26,7 +26,7 @@
       "category": "weight-loss",
       "price": 34.99,
       "description": "Powerful formula designed to enhance metabolic rate and promote fat loss. Contains clinically studied ingredients that help your body burn more calories throughout the day.",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/butt_pills.jpg",
       "stock": 40,
       "benefits": ["Enhances metabolic rate", "Promotes fat loss", "Clinically studied ingredients", "All-day energy support"]
     },
@@ -36,7 +36,7 @@
       "category": "beauty",
       "price": 49.99,
       "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
-      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/acne_soap.jpg",
       "stock": 30,
       "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
     },
@@ -46,17 +46,17 @@
       "category": "beauty",
       "price": 32.99,
       "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
-      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/skin_supplements.jpg",
       "stock": 45,
       "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
     },
     {
       "id": 6,
-      "name": "Hair Growth Formula",
+      "name": "Hip and Butt Booster",
       "category": "beauty",
       "price": 42.99,
       "description": "Comprehensive hair health supplement with biotin, zinc, and other essential nutrients to support strong, healthy hair growth and reduce hair thinning.",
-      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/hip&butt_boost.jpg",
       "stock": 35,
       "benefits": ["Supports hair growth", "Reduces hair thinning", "Contains biotin and zinc", "Strengthens hair follicles"]
     },
@@ -66,7 +66,7 @@
       "category": "supplements",
       "price": 59.99,
       "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/upper_body.jpg",
       "stock": 60,
       "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
     },
@@ -76,7 +76,7 @@
       "category": "supplements",
       "price": 44.99,
       "description": "Powerful pre-workout formula designed to increase energy, focus, and endurance during training. Contains caffeine, beta-alanine, and other performance-enhancing ingredients.",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/slim_bomb.jpg",
       "stock": 40,
       "benefits": ["Increases energy and focus", "Enhances endurance", "Improves performance", "Clinically effective ingredients"]
     },
@@ -86,7 +86,7 @@
       "category": "vitamins",
       "price": 29.99,
       "description": "Comprehensive multivitamin formula with essential vitamins and minerals to support overall health and wellbeing. Designed for optimal absorption and effectiveness.",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/flat_tummy_tea.jpg",
       "stock": 75,
       "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
     },
@@ -96,7 +96,7 @@
       "category": "vitamins",
       "price": 24.99,
       "description": "Advanced formula combining Vitamin D3 and K2 for optimal bone health, immune support, and cardiovascular function. Highly bioavailable form for maximum effectiveness.",
-      "image": "https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/advanced_weightloss.jpg",
       "stock": 50,
       "benefits": ["Supports bone health", "Boosts immune system", "Cardiovascular support", "Highly bioavailable"]
     },
@@ -106,7 +106,7 @@
       "category": "fitness",
       "price": 39.99,
       "description": "Premium set of 5 resistance bands with different tension levels. Perfect for home workouts, physical therapy, and strength training. Includes carrying bag and exercise guide.",
-      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "image": "images/products/breast&butt.jpg",
       "stock": 30,
       "benefits": ["5 different tension levels", "Versatile for various exercises", "Portable and lightweight", "Includes exercise guide"]
     },
