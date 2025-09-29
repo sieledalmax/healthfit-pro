@@ -55,6 +55,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 12px 0;
+        position: relative;
     }
     
     .logo {
@@ -492,12 +493,14 @@
     }
 
     .benefits-list ul {
-        padding-left: 20px;
+        padding-left: 0;
+        list-style: none;
     }
 
     .benefits-list li {
         margin-bottom: 8px;
         position: relative;
+        padding-left: 25px;
     }
 
     .benefits-list li:before {
@@ -505,7 +508,7 @@
         color: var(--success);
         font-weight: bold;
         position: absolute;
-        left: -20px;
+        left: 0;
     }
 
     .quantity-selector {
@@ -718,6 +721,28 @@
         padding: 20px;
     }
     
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .modal-share-btn {
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+        transition: background 0.3s;
+    }
+    
+    .modal-share-btn:hover {
+        background: rgba(0, 168, 89, 0.1);
+    }
+    
     @media (min-width: 768px) {
         .modal .product-detail {
             max-width: 800px;
@@ -736,13 +761,62 @@
         }
     }
 
-    /* Responsive */
+    /* Mobile Search Styles */
     @media (max-width: 768px) {
-        .mobile-menu-btn {
-            display: block;
+        .mobile-search-btn {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+        
+        .mobile-search-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
         
         .search-bar {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: none;
+            z-index: 101;
+            border-top: 1px solid var(--gray);
+        }
+        
+        .search-bar.active {
+            display: block;
+        }
+        
+        .search-bar .close-search {
+            display: none;
+            position: absolute;
+            right: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+        
+        .search-bar.active .close-search {
+            display: block;
+        }
+        
+        .mobile-menu-btn {
             display: none;
         }
         
@@ -826,6 +900,63 @@
         .footer-content {
             grid-template-columns: 1fr;
         }
+        
+        /* Mobile font size adjustments */
+        .section-title {
+            font-size: 1.4rem;
+        }
+        
+        .product-name {
+            font-size: 0.9rem;
+        }
+        
+        .product-price {
+            font-size: 1rem;
+        }
+        
+        .product-actions button {
+            font-size: 0.75rem;
+            padding: 8px;
+        }
+        
+        /* Mobile modal adjustments */
+        .modal {
+            padding: 10px;
+        }
+        
+        .modal .product-detail {
+            margin: 20px auto;
+        }
+        
+        .detail-name {
+            font-size: 1.4rem;
+        }
+        
+        .detail-price {
+            font-size: 1.5rem;
+        }
+        
+        .detail-description {
+            font-size: 0.9rem;
+        }
+        
+        .benefits-list h3 {
+            font-size: 1rem;
+        }
+        
+        .benefits-list li {
+            font-size: 0.9rem;
+        }
+        
+        .quantity-control button {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .detail-actions .btn {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
@@ -869,13 +1000,20 @@
     <!-- Header -->
     <header>
         <div class="header-top">
-            <div class="logo">
+            <div class="logo" onclick="refreshPage()">
                 <i class="fas fa-heartbeat logo-icon"></i>
                 <h1>HealthFit Pro</h1>
             </div>
             
-            <div class="search-bar">
+            <!-- Mobile Search Button -->
+            <button class="mobile-search-btn" onclick="toggleMobileSearch()">
+                <i class="fas fa-search"></i>
+            </button>
+            
+            <!-- Search Bar -->
+            <div class="search-bar" id="searchBar">
                 <input type="text" placeholder="Search products..." id="searchInput">
+                <button class="close-search" onclick="toggleMobileSearch()"><i class="fas fa-times"></i></button>
                 <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
             </div>
             
@@ -894,10 +1032,9 @@
         
         <nav>
             <ul>
-                <li><a class="active" onclick="scrollToSection('all')">All Products</a></li>
-                <li><a onclick="scrollToSection('weight-loss')">Weight Loss</a></li>
-                <li><a onclick="scrollToSection('beauty')">Beauty</a></li>
+                <li><a class="active" onclick="scrollToSection('weight-loss')">Weight Loss</a></li>
                 <li><a onclick="scrollToSection('supplements')">Supplements</a></li>
+                <li><a onclick="scrollToSection('baby-meals')">Baby Meals</a></li>
                 <li><a onclick="scrollToSection('vitamins')">Vitamins</a></li>
                 <li><a onclick="scrollToSection('fitness')">Fitness</a></li>
             </ul>
@@ -909,7 +1046,7 @@
         <div class="container">
             <h2>Transform Your Health Journey</h2>
             <p>Discover premium health and wellness products scientifically formulated to help you achieve your fitness goals.</p>
-            <a href="#all" class="btn btn-primary">Shop Now</a>
+            <a class="btn btn-primary" onclick="scrollToSection('weight-loss')">Shop Now</a>
         </div>
     </section>
 
@@ -923,14 +1060,6 @@
                 <p>Please wait while we load our premium health products.</p>
             </div>
 
-            <!-- All Products Section -->
-            <div class="product-section" id="all" style="display: none;">
-                <div class="section-header">
-                    <h2 class="section-title">All Products</h2>
-                </div>
-                <div class="products-grid" id="allProductsGrid"></div>
-            </div>
-
             <!-- Weight Loss Section -->
             <div class="product-section" id="weight-loss" style="display: none;">
                 <div class="section-header">
@@ -939,20 +1068,20 @@
                 <div class="products-grid" id="weightLossGrid"></div>
             </div>
 
-            <!-- Beauty Section -->
-            <div class="product-section" id="beauty" style="display: none;">
-                <div class="section-header">
-                    <h2 class="section-title">Beauty Products</h2>
-                </div>
-                <div class="products-grid" id="beautyGrid"></div>
-            </div>
-
             <!-- Supplements Section -->
             <div class="product-section" id="supplements" style="display: none;">
                 <div class="section-header">
                     <h2 class="section-title">Supplements</h2>
                 </div>
                 <div class="products-grid" id="supplementsGrid"></div>
+            </div>
+
+            <!-- Baby Meals Section -->
+            <div class="product-section" id="baby-meals" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">Baby Meals</h2>
+                </div>
+                <div class="products-grid" id="BabyMealsGrid"></div>
             </div>
 
             <!-- Vitamins Section -->
@@ -984,10 +1113,10 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#all">All Products</a></li>
                         <li><a href="#weight-loss">Weight Loss</a></li>
-                        <li><a href="#beauty">Beauty</a></li>
                         <li><a href="#supplements">Supplements</a></li>
+                        <li><a href="#baby-meals">Baby Meals</a></li>
+                        <li><a href="#vitamins">Vitamins</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1022,7 +1151,12 @@
             </button>
             <img id="detailImage" src="" alt="" class="detail-image">
             <div class="detail-info">
-                <div id="detailCategory" class="detail-category"></div>
+                <div class="modal-header">
+                    <div id="detailCategory" class="detail-category"></div>
+                    <button class="modal-share-btn" onclick="shareProduct(currentProductDetail.id)" title="Share product">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
                 <h1 id="detailName" class="detail-name"></h1>
                 <div id="detailPrice" class="detail-price"></div>
                 <p id="detailDescription" class="detail-description"></p>
@@ -1047,383 +1181,555 @@
     </div>
 
     <script>
-        // Global variables
-        let products = [];
-        let currentProductDetail = null;
-        let detailQuantity = 1;
-        let backButtonPressed = false;
-        let backButtonTimer = null;
+    // Global variables
+    let products = [];
+    let currentProductDetail = null;
+    let detailQuantity = 1;
+    let backButtonPressed = false;
+    let backButtonTimer = null;
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProducts();
-            updateCartCount();
-            loadCartFromStorage();
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        loadProducts();
+        updateCartCount();
+        loadCartFromStorage();
+        
+        // Initialize URL routing
+        initURLRouting();
+        
+        // Set up back button handling
+        setupBackButtonHandling();
+        
+        // Set up click outside to close mobile search
+        setupClickOutsideSearch();
+    });
+
+    // URL Routing for Products
+    function initURLRouting() {
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product');
+        const category = urlParams.get('category');
+        
+        // If product ID is specified, show that product
+        if (productId) {
+            // Wait for products to load, then show the product
+            const checkProductLoaded = setInterval(() => {
+                if (products.length > 0) {
+                    clearInterval(checkProductLoaded);
+                    const product = products.find(p => p.id === parseInt(productId));
+                    if (product) {
+                        showProductDetail(parseInt(productId));
+                        
+                        // Also scroll to the appropriate category
+                        scrollToSection(product.category);
+                    }
+                }
+            }, 100);
+        }
+        
+        // If category is specified, scroll to that section
+        if (category && !productId) {
+            scrollToSection(category);
+        }
+    }
+
+    // Set up back button handling for modal and page exit
+    function setupBackButtonHandling() {
+        window.addEventListener('popstate', function(event) {
+            const modal = document.getElementById('productDetailModal');
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product');
             
-            // Set up back button handling
-            setupBackButtonHandling();
-        });
-
-        // Set up back button handling for modal and page exit
-        function setupBackButtonHandling() {
-            window.addEventListener('popstate', function(event) {
-                const modal = document.getElementById('productDetailModal');
-                
-                // If modal is open, close it and prevent navigation
-                if (modal.style.display === 'block') {
-                    closeProductDetail();
-                    // Push a new state to prevent the back button from navigating away
-                    history.pushState(null, null, window.location.href);
+            // If URL has product parameter but modal is closed, open it
+            if (productId && modal.style.display !== 'block') {
+                const product = products.find(p => p.id === parseInt(productId));
+                if (product) {
+                    showProductDetail(parseInt(productId));
                     return;
                 }
-                
-                // If modal is not open, handle double back button press
-                if (!backButtonPressed) {
-                    backButtonPressed = true;
-                    
-                    // Show notification
-                    showNotification('Press back again to leave');
-                    
-                    // Reset after 2 seconds
-                    if (backButtonTimer) clearTimeout(backButtonTimer);
-                    backButtonTimer = setTimeout(() => {
-                        backButtonPressed = false;
-                    }, 2000);
-                    
-                    // Push a new state to prevent the back button from navigating away
-                    history.pushState(null, null, window.location.href);
-                } else {
-                    // User pressed back twice, allow navigation
-                    backButtonPressed = false;
-                    if (backButtonTimer) clearTimeout(backButtonTimer);
-                    // Let the browser handle the navigation
-                }
-            });
-            
-            // Push initial state
-            history.pushState(null, null, window.location.href);
-        }
-
-        // Load products from JSON file
-        async function loadProducts() {
-            try {
-                const response = await fetch('products.json');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                products = data.products;
-                
-                // Hide loading state and show products
-                document.getElementById('loadingState').style.display = 'none';
-                document.querySelectorAll('.product-section').forEach(section => {
-                    section.style.display = 'block';
-                });
-                
-                displayProductsByCategory();
-            } catch (error) {
-                console.error('Error loading products:', error);
-                
-                // Show error state
-                document.getElementById('loadingState').innerHTML = `
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>Failed to Load Products</h3>
-                    <p>There was an error loading our product catalog. Please try refreshing the page.</p>
-                    <button class="btn btn-primary" onclick="loadProducts()">Try Again</button>
-                `;
-                
-                // Fallback to empty product sections
-                document.querySelectorAll('.products-grid').forEach(grid => {
-                    grid.innerHTML = '<div class="empty-state"><h3>No products available</h3></div>';
-                });
             }
-        }
-
-        // Product Display by Category
-        function displayProductsByCategory() {
-            // All Products
-            const allProductsGrid = document.getElementById('allProductsGrid');
-            allProductsGrid.innerHTML = products.map(product => createProductCard(product)).join('');
             
-            // Weight Loss Products
-            const weightLossGrid = document.getElementById('weightLossGrid');
-            const weightLossProducts = products.filter(p => p.category === 'weight-loss');
-            weightLossGrid.innerHTML = weightLossProducts.length > 0 
-                ? weightLossProducts.map(product => createProductCard(product)).join('')
-                : '<div class="empty-state"><h3>No weight loss products available</h3></div>';
-            
-            // Beauty Products
-            const beautyGrid = document.getElementById('beautyGrid');
-            const beautyProducts = products.filter(p => p.category === 'beauty');
-            beautyGrid.innerHTML = beautyProducts.length > 0 
-                ? beautyProducts.map(product => createProductCard(product)).join('')
-                : '<div class="empty-state"><h3>No beauty products available</h3></div>';
-            
-            // Supplements
-            const supplementsGrid = document.getElementById('supplementsGrid');
-            const supplementsProducts = products.filter(p => p.category === 'supplements');
-            supplementsGrid.innerHTML = supplementsProducts.length > 0 
-                ? supplementsProducts.map(product => createProductCard(product)).join('')
-                : '<div class="empty-state"><h3>No supplements available</h3></div>';
-            
-            // Vitamins
-            const vitaminsGrid = document.getElementById('vitaminsGrid');
-            const vitaminsProducts = products.filter(p => p.category === 'vitamins');
-            vitaminsGrid.innerHTML = vitaminsProducts.length > 0 
-                ? vitaminsProducts.map(product => createProductCard(product)).join('')
-                : '<div class="empty-state"><h3>No vitamins available</h3></div>';
-            
-            // Fitness
-            const fitnessGrid = document.getElementById('fitnessGrid');
-            const fitnessProducts = products.filter(p => p.category === 'fitness');
-            fitnessGrid.innerHTML = fitnessProducts.length > 0 
-                ? fitnessProducts.map(product => createProductCard(product)).join('')
-                : '<div class="empty-state"><h3>No fitness products available</h3></div>';
-        }
-
-        function createProductCard(product) {
-            return `
-                <div class="product-card" onclick="showProductDetail(${product.id})">
-                    <img src="${product.image}" alt="${product.name}" class="product-image" 
-                         onerror="this.src='https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
-                    <div class="product-info">
-                        <div class="product-category">${formatCategory(product.category)}</div>
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-price-quantity">
-                            <div class="product-price">$${product.price.toFixed(2)}</div>
-                            <div class="product-quantity" onclick="event.stopPropagation()">
-                                <button onclick="decreaseQuantity(${product.id})">-</button>
-                                <span id="quantity-${product.id}">1</span>
-                                <button onclick="increaseQuantity(${product.id})">+</button>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart</button>
-                            <button class="buy-now" onclick="event.stopPropagation(); buyNow(${product.id})">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function showProductDetail(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            currentProductDetail = product;
-            detailQuantity = 1;
-            
-            const modal = document.getElementById('productDetailModal');
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            
-            // Push a new state to the history when opening modal
-            history.pushState({ modalOpen: true }, null, window.location.href);
-            
-            document.getElementById('detailImage').src = product.image;
-            document.getElementById('detailImage').alt = product.name;
-            document.getElementById('detailCategory').textContent = formatCategory(product.category);
-            document.getElementById('detailName').textContent = product.name;
-            document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
-            document.getElementById('detailDescription').textContent = product.description;
-            document.getElementById('detailQuantity').textContent = detailQuantity;
-            
-            // Add benefits if available
-            const benefitsContainer = document.getElementById('detailBenefits');
-            if (product.benefits && product.benefits.length > 0) {
-                benefitsContainer.innerHTML = `
-                    <h3>Key Benefits:</h3>
-                    <ul>
-                        ${product.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
-                    </ul>
-                `;
-            } else {
-                benefitsContainer.innerHTML = '';
-            }
-        }
-
-        function closeProductDetail() {
-            const modal = document.getElementById('productDetailModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            currentProductDetail = null;
-            
-            // Push a new state when closing modal
-            history.pushState(null, null, window.location.href);
-        }
-
-        function updateDetailQuantity(change) {
-            detailQuantity = Math.max(1, detailQuantity + change);
-            document.getElementById('detailQuantity').textContent = detailQuantity;
-        }
-
-        function addToCartFromDetail() {
-            if (!currentProductDetail) return;
-            
-            addToCart(currentProductDetail.id, detailQuantity);
-            closeProductDetail();
-        }
-
-        function buyNowFromDetail() {
-            addToCartFromDetail();
-            window.location.href = 'cart.html';
-        }
-
-        function formatCategory(category) {
-            return category.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-        }
-
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-                
-                // Update active nav item
-                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                document.querySelector(`nav a[onclick="scrollToSection('${sectionId}')"]`).classList.add('active');
-            }
-        }
-
-        function searchProducts() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            if (!searchTerm) {
-                displayProductsByCategory();
+            // If modal is open but URL doesn't have product parameter, close it
+            if (modal.style.display === 'block' && !productId) {
+                closeProductDetail();
                 return;
             }
             
-            const filteredProducts = products.filter(product => 
-                product.name.toLowerCase().includes(searchTerm) ||
-                product.description.toLowerCase().includes(searchTerm) ||
-                product.category.includes(searchTerm)
-            );
-            
-            // Update all sections to show only matching products
-            document.querySelectorAll('.products-grid').forEach(grid => {
-                grid.innerHTML = '';
-            });
-            
-            const allProductsGrid = document.getElementById('allProductsGrid');
-            allProductsGrid.innerHTML = filteredProducts.length > 0 
-                ? filteredProducts.map(product => createProductCard(product)).join('')
-                : '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search terms</p></div>';
-            
-            // Show only the all products section
-            document.querySelectorAll('.product-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById('all').style.display = 'block';
-        }
-
-        // Quantity management for product cards
-        function increaseQuantity(productId) {
-            const quantityElement = document.getElementById(`quantity-${productId}`);
-            let quantity = parseInt(quantityElement.textContent);
-            quantityElement.textContent = quantity + 1;
-        }
-
-        function decreaseQuantity(productId) {
-            const quantityElement = document.getElementById(`quantity-${productId}`);
-            let quantity = parseInt(quantityElement.textContent);
-            if (quantity > 1) {
-                quantityElement.textContent = quantity - 1;
-            }
-        }
-
-        function getQuantity(productId) {
-            const quantityElement = document.getElementById(`quantity-${productId}`);
-            return parseInt(quantityElement.textContent);
-        }
-
-        // Cart Management
-        function addToCart(productId, quantity = null) {
-            if (quantity === null) {
-                quantity = getQuantity(productId);
-            }
-            
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            let cart = getCartFromStorage();
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: quantity
-                });
-            }
-            
-            saveCartToStorage(cart);
-            updateCartCount();
-            showNotification(`${product.name} added to cart!`);
-        }
-
-        function buyNow(productId) {
-            addToCart(productId);
-            window.location.href = 'cart.html';
-        }
-
-        function getCartFromStorage() {
-            const cartJson = sessionStorage.getItem('healthfit_cart');
-            return cartJson ? JSON.parse(cartJson) : [];
-        }
-
-        function saveCartToStorage(cart) {
-            sessionStorage.setItem('healthfit_cart', JSON.stringify(cart));
-        }
-
-        function loadCartFromStorage() {
-            updateCartCount();
-        }
-
-        function updateCartCount() {
-            const cart = getCartFromStorage();
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
-        }
-
-        // Utility Functions
-        function showNotification(message) {
-            // Remove existing notification if any
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        // Search on Enter key
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchProducts();
-            }
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('productDetailModal');
-            if (event.target === modal) {
+            // If modal is open and back button pressed, close modal and update URL
+            if (modal.style.display === 'block') {
                 closeProductDetail();
+                // Push a new state to prevent the back button from navigating away
+                history.pushState(null, null, window.location.pathname);
+                return;
+            }
+            
+            // Original back button double-press logic
+            if (!backButtonPressed) {
+                backButtonPressed = true;
+                showNotification('Press back again to leave');
+                
+                if (backButtonTimer) clearTimeout(backButtonTimer);
+                backButtonTimer = setTimeout(() => {
+                    backButtonPressed = false;
+                }, 2000);
+                
+                history.pushState(null, null, window.location.href);
+            } else {
+                backButtonPressed = false;
+                if (backButtonTimer) clearTimeout(backButtonTimer);
             }
         });
-    </script>
+        
+        // Push initial state
+        history.pushState(null, null, window.location.href);
+    }
+
+    // Set up click outside to close mobile search
+    function setupClickOutsideSearch() {
+        document.addEventListener('click', function(event) {
+            const searchBar = document.getElementById('searchBar');
+            const mobileSearchBtn = document.querySelector('.mobile-search-btn');
+            
+            if (searchBar && mobileSearchBtn && 
+                !searchBar.contains(event.target) && 
+                !mobileSearchBtn.contains(event.target) &&
+                searchBar.classList.contains('active')) {
+                searchBar.classList.remove('active');
+            }
+        });
+    }
+
+    // Mobile Search Toggle
+    function toggleMobileSearch() {
+        const searchBar = document.getElementById('searchBar');
+        searchBar.classList.toggle('active');
+        
+        // Focus on input when opened
+        if (searchBar.classList.contains('active')) {
+            document.getElementById('searchInput').focus();
+        }
+    }
+
+    // Load products from JSON file
+    async function loadProducts() {
+        try {
+            const response = await fetch('products.json');
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            products = data.products;
+            
+            // Hide loading state and show products
+            document.getElementById('loadingState').style.display = 'none';
+            document.querySelectorAll('.product-section').forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            displayProductsByCategory();
+        } catch (error) {
+            console.error('Error loading products:', error);
+            
+            // Show error state
+            document.getElementById('loadingState').innerHTML = `
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Failed to Load Products</h3>
+                <p>There was an error loading our product catalog. Please try refreshing the page.</p>
+                <button class="btn btn-primary" onclick="loadProducts()">Try Again</button>
+            `;
+            
+            // Fallback to empty product sections
+            document.querySelectorAll('.products-grid').forEach(grid => {
+                grid.innerHTML = '<div class="empty-state"><h3>No products available</h3></div>';
+            });
+        }
+    }
+
+    // Product Display by Category
+    function displayProductsByCategory() {
+        // Reset the weight loss section title in case it was changed by search
+        const weightLossTitle = document.querySelector('#weight-loss .section-title');
+        weightLossTitle.textContent = 'Weight Loss Products';
+        
+        // Weight Loss Products
+        const weightLossGrid = document.getElementById('weightLossGrid');
+        const weightLossProducts = products.filter(p => p.category === 'weight-loss');
+        weightLossGrid.innerHTML = weightLossProducts.length > 0 
+            ? weightLossProducts.map(product => createProductCard(product)).join('')
+            : '<div class="empty-state"><h3>No weight loss products available</h3></div>';
+        
+        // Supplements
+        const supplementsGrid = document.getElementById('supplementsGrid');
+        const supplementsProducts = products.filter(p => p.category === 'supplements');
+        supplementsGrid.innerHTML = supplementsProducts.length > 0 
+            ? supplementsProducts.map(product => createProductCard(product)).join('')
+            : '<div class="empty-state"><h3>No supplements available</h3></div>';
+
+        // Baby Meals
+        const babyMealsGrid = document.getElementById('BabyMealsGrid');
+        const babyMealsProducts = products.filter(p => p.category === 'baby-meals');
+        babyMealsGrid.innerHTML = babyMealsProducts.length > 0 
+            ? babyMealsProducts.map(product => createProductCard(product)).join('')
+            : '<div class="empty-state"><h3>No baby meals available</h3></div>';
+        
+        // Vitamins
+        const vitaminsGrid = document.getElementById('vitaminsGrid');
+        const vitaminsProducts = products.filter(p => p.category === 'vitamins');
+        vitaminsGrid.innerHTML = vitaminsProducts.length > 0 
+            ? vitaminsProducts.map(product => createProductCard(product)).join('')
+            : '<div class="empty-state"><h3>No vitamins available</h3></div>';
+        
+        // Fitness
+        const fitnessGrid = document.getElementById('fitnessGrid');
+        const fitnessProducts = products.filter(p => p.category === 'fitness');
+        fitnessGrid.innerHTML = fitnessProducts.length > 0 
+            ? fitnessProducts.map(product => createProductCard(product)).join('')
+            : '<div class="empty-state"><h3>No fitness products available</h3></div>';
+    }
+
+    function createProductCard(product) {
+        return `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" class="product-image" 
+                     onerror="this.src='https://images.unsplash.com/photo-1594736797933-d0b4ec4d7d72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
+                <div class="product-info">
+                    <div class="product-category">${formatCategory(product.category)}</div>
+                    <h3 class="product-name" onclick="showProductDetail(${product.id})" style="cursor: pointer;">${product.name}</h3>
+                    
+                    <!-- Add share button -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button onclick="event.stopPropagation(); shareProduct(${product.id})" style="background: none; border: none; color: var(--primary); cursor: pointer; font-size: 0.8rem;" title="Share product">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="product-price-quantity">
+                        <div class="product-quantity" onclick="event.stopPropagation()">
+                            <button onclick="decreaseQuantity(${product.id})">-</button>
+                            <span id="quantity-${product.id}">1</span>
+                            <button onclick="increaseQuantity(${product.id})">+</button>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart</button>
+                        <button class="buy-now" onclick="event.stopPropagation(); buyNow(${product.id})">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function refreshPage() {
+        // Reset the weight loss section title in case it was changed by search
+        const weightLossTitle = document.querySelector('#weight-loss .section-title');
+        weightLossTitle.textContent = 'Weight Loss Products';
+        
+        // Clear search input
+        document.getElementById('searchInput').value = '';
+        
+        // Reset to normal category view - show ALL sections
+        document.querySelectorAll('.product-section').forEach(section => {
+            section.style.display = 'block';
+        });
+        
+        // Reload all products in their respective categories
+        displayProductsByCategory();
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Reset active nav item to weight loss
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        document.querySelector('nav a[onclick="scrollToSection(\'weight-loss\')"]').classList.add('active');
+        
+        // Clear URL parameters
+        const newUrl = window.location.pathname;
+        history.pushState(null, '', newUrl);
+        
+        // Close mobile search if open
+        document.getElementById('searchBar').classList.remove('active');
+    }
+
+    function showProductDetail(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        
+        currentProductDetail = product;
+        detailQuantity = 1;
+        
+        const modal = document.getElementById('productDetailModal');
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Update URL with product parameter
+        const newUrl = `${window.location.pathname}?product=${productId}`;
+        history.pushState({ productId: productId }, '', newUrl);
+        
+        document.getElementById('detailImage').src = product.image;
+        document.getElementById('detailImage').alt = product.name;
+        document.getElementById('detailCategory').textContent = formatCategory(product.category);
+        document.getElementById('detailName').textContent = product.name;
+        document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
+        document.getElementById('detailDescription').textContent = product.description;
+        document.getElementById('detailQuantity').textContent = detailQuantity;
+        
+        // Add benefits if available
+        const benefitsContainer = document.getElementById('detailBenefits');
+        if (product.benefits && product.benefits.length > 0) {
+            benefitsContainer.innerHTML = `
+                <h3>Key Benefits:</h3>
+                <ul>
+                    ${product.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                </ul>
+            `;
+        } else {
+            benefitsContainer.innerHTML = '';
+        }
+    }
+
+    function closeProductDetail() {
+        const modal = document.getElementById('productDetailModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        currentProductDetail = null;
+        
+        // Remove product parameter from URL when closing
+        const newUrl = window.location.pathname;
+        history.pushState(null, '', newUrl);
+    }
+
+    function updateDetailQuantity(change) {
+        detailQuantity = Math.max(1, detailQuantity + change);
+        document.getElementById('detailQuantity').textContent = detailQuantity;
+    }
+
+    function addToCartFromDetail() {
+        if (!currentProductDetail) return;
+        
+        addToCart(currentProductDetail.id, detailQuantity);
+        closeProductDetail();
+    }
+
+    function buyNowFromDetail() {
+        addToCartFromDetail();
+        window.location.href = 'cart.html';
+    }
+
+    function formatCategory(category) {
+        return category.split('-').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    }
+
+    function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            // Reset the weight loss section title in case it was changed by search
+            if (sectionId === 'weight-loss') {
+                const weightLossTitle = document.querySelector('#weight-loss .section-title');
+                weightLossTitle.textContent = 'Weight Loss Products';
+            }
+            
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update active nav item
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            document.querySelector(`nav a[onclick="scrollToSection('${sectionId}')"]`).classList.add('active');
+        }
+    }
+
+    function searchProducts() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        if (!searchTerm) {
+            displayProductsByCategory();
+            // Close mobile search when search is cleared
+            if (window.innerWidth <= 768) {
+                document.getElementById('searchBar').classList.remove('active');
+            }
+            return;
+        }
+        
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(searchTerm) ||
+            product.description.toLowerCase().includes(searchTerm) ||
+            product.category.includes(searchTerm)
+        );
+        
+        // Update all sections to show only matching products
+        document.querySelectorAll('.products-grid').forEach(grid => {
+            grid.innerHTML = '';
+        });
+        
+        // Use the weight loss section to display search results
+        const weightLossGrid = document.getElementById('weightLossGrid');
+        const sectionTitle = document.querySelector('#weight-loss .section-title');
+        
+        // Change the section title to "Search Results"
+        sectionTitle.textContent = `Search Results for "${searchTerm}"`;
+        
+        weightLossGrid.innerHTML = filteredProducts.length > 0 
+            ? filteredProducts.map(product => createProductCard(product)).join('')
+            : '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search terms</p></div>';
+        
+        // Show only the weight loss section for search results
+        document.querySelectorAll('.product-section').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById('weight-loss').style.display = 'block';
+        
+        // Update active nav item to show search is active
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        
+        // Close mobile search after searching
+        if (window.innerWidth <= 768) {
+            document.getElementById('searchBar').classList.remove('active');
+        }
+    }
+
+    // Add share function
+    function shareProduct(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        
+        // Create shareable URL
+        const shareableUrl = `${window.location.origin}${window.location.pathname}?product=${productId}`;
+        
+        // Check if Web Share API is available
+        if (navigator.share) {
+            navigator.share({
+                title: product.name,
+                text: product.description,
+                url: shareableUrl
+            }).catch(err => {
+                console.log('Error sharing:', err);
+                fallbackShare(shareableUrl, product.name);
+            });
+        } else {
+            // Fallback for browsers that don't support Web Share API
+            fallbackShare(shareableUrl, product.name);
+        }
+    }
+
+    function fallbackShare(url, productName) {
+        // Copy to clipboard
+        navigator.clipboard.writeText(url).then(() => {
+            showNotification(`Link to ${productName} copied to clipboard!`);
+        }).catch(() => {
+            // If clipboard fails, show URL in alert
+            prompt('Copy this link to share:', url);
+        });
+    }
+
+    // Quantity management for product cards
+    function increaseQuantity(productId) {
+        const quantityElement = document.getElementById(`quantity-${productId}`);
+        let quantity = parseInt(quantityElement.textContent);
+        quantityElement.textContent = quantity + 1;
+    }
+
+    function decreaseQuantity(productId) {
+        const quantityElement = document.getElementById(`quantity-${productId}`);
+        let quantity = parseInt(quantityElement.textContent);
+        if (quantity > 1) {
+            quantityElement.textContent = quantity - 1;
+        }
+    }
+
+    function getQuantity(productId) {
+        const quantityElement = document.getElementById(`quantity-${productId}`);
+        return parseInt(quantityElement.textContent);
+    }
+
+    // Cart Management
+    function addToCart(productId, quantity = null) {
+        if (quantity === null) {
+            quantity = getQuantity(productId);
+        }
+        
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        
+        let cart = getCartFromStorage();
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: quantity
+            });
+        }
+        
+        saveCartToStorage(cart);
+        updateCartCount();
+        showNotification(`${product.name} added to cart!`);
+    }
+
+    function buyNow(productId) {
+        addToCart(productId);
+        window.location.href = 'cart.html';
+    }
+
+    function getCartFromStorage() {
+        const cartJson = sessionStorage.getItem('healthfit_cart');
+        return cartJson ? JSON.parse(cartJson) : [];
+    }
+
+    function saveCartToStorage(cart) {
+        sessionStorage.setItem('healthfit_cart', JSON.stringify(cart));
+    }
+
+    function loadCartFromStorage() {
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        const cart = getCartFromStorage();
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cartCount').textContent = count;
+    }
+
+    // Utility Functions
+    function showNotification(message) {
+        // Remove existing notification if any
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Search on Enter key
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchProducts();
+        }
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('productDetailModal');
+        if (event.target === modal) {
+            closeProductDetail();
+        }
+    });
+</script>
 </body>
 </html>
