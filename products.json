@@ -30,6 +30,16 @@
       "stock": 75,
       "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
     },
+    {
+      "id": 1004,
+      "name": "Weightloss Formula Capzules",
+      "category": "weight-loss",
+      "price": 54.99,
+      "description": "Comprehensive multivitamin formula with essential vitamins and minerals to support overall health and wellbeing. Designed for optimal absorption and effectiveness.",
+      "image": "images/products/weight_loss_formula.jpg",
+      "stock": 75,
+      "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
+    },
 
     {
       "id": 2001,
@@ -82,6 +92,17 @@
       "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
     },
     {
+      "id": 2006,
+      "name": "Pre Workout Supplements",
+      "category": "supplements",
+      "price": 39.99,
+      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "image": "images/products/pre_workout_supp.jpg",
+      "stock": 260,
+      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+    },
+    
+    {
       "id": 4001,
       "name": "Skin Glow Detox",
       "category": "detox",
@@ -104,14 +125,45 @@
     },
     {
       "id": 4003,
-      "name": "Acne Soap",
+      "name": "Womb Detox Tea",
       "category": "detox",
       "price": 49.99,
+      "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
+      "image": "images/products/womb_detox.jpg",
+      "stock": 30,
+      "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
+    },
+    {
+      "id": 4004,
+      "name": "Acne Soap",
+      "category": "detox",
+      "price": 19.99,
       "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
       "image": "images/products/acne_soap.jpg",
       "stock": 30,
       "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
     },
+    {
+      "id": 4005,
+      "name": "Body Slimmer Detox",
+      "category": "detox",
+      "price": 39.99,
+      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "image": "images/products/slim_body_detox.jpg",
+      "stock": 260,
+      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+    },
+    {
+      "id": 4006,
+      "name": "Herbal Detox Tea",
+      "category": "detox",
+      "price": 39.99,
+      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "image": "images/products/tamara_herbal.jpg",
+      "stock": 260,
+      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+    },
+
     {
       "id": 5001,
       "name": "Yoga Mat Premium",
