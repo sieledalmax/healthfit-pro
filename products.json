@@ -1,78 +1,49 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": 1001,
       "name": "Green Tea Fat Burner",
       "category": "weight-loss",
-      "price": 29.99,
+      "price": 49.99,
       "description": "Advanced formula with natural extracts to boost metabolism and support weight management. Contains green tea extract, caffeine, and other natural ingredients that help increase energy expenditure and fat oxidation.",
       "image": "images/products/slimming_tea.jpg",
       "stock": 50,
       "benefits": ["Boosts metabolism", "Increases energy", "Supports fat burning", "Natural ingredients"]
     },
     {
-      "id": 2,
-      "name": "Keto Diet Support",
+      "id": 1002,
+      "name": "Advanved Weighloss Pills",
       "category": "weight-loss",
-      "price": 39.99,
-      "description": "Specifically formulated to support ketogenic diet and accelerate fat burning. Contains exogenous ketones, MCT oil, and electrolytes to help your body transition into ketosis faster.",
-      "image": "images/products/detox_tea.jpg",
-      "stock": 25,
-      "benefits": ["Supports ketosis", "Reduces keto flu symptoms", "Accelerates fat burning", "Increases energy"]
+      "price": 44.99,
+      "description": "Advanced formula combining Vitamin D3 and K2 for optimal bone health, immune support, and cardiovascular function. Highly bioavailable form for maximum effectiveness.",
+      "image": "images/products/advanced_weightloss.jpg",
+      "stock": 50,
+      "benefits": ["Supports bone health", "Boosts immune system", "Cardiovascular support", "Highly bioavailable"]
     },
     {
-      "id": 3,
-      "name": "Metabolism Booster Capsules",
+      "id": 1003,
+      "name": "Flat Tummy Tea",
       "category": "weight-loss",
-      "price": 34.99,
+      "price": 35.99,
+      "description": "Comprehensive multivitamin formula with essential vitamins and minerals to support overall health and wellbeing. Designed for optimal absorption and effectiveness.",
+      "image": "images/products/flat_tummy_tea.jpg",
+      "stock": 75,
+      "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
+    },
+    
+    {
+      "id": 2001,
+      "name": "Butt Pills",
+      "category": "supplements",
+      "price": 49.99,
       "description": "Powerful formula designed to enhance metabolic rate and promote fat loss. Contains clinically studied ingredients that help your body burn more calories throughout the day.",
       "image": "images/products/butt_pills.jpg",
-      "stock": 40,
+      "stock": 140,
       "benefits": ["Enhances metabolic rate", "Promotes fat loss", "Clinically studied ingredients", "All-day energy support"]
     },
     {
-      "id": 4,
-      "name": "Collagen Beauty Booster",
-      "category": "beauty",
-      "price": 49.99,
-      "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
-      "image": "images/products/acne_soap.jpg",
-      "stock": 30,
-      "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
-    },
-    {
-      "id": 5,
-      "name": "Skin Glow Supplement",
-      "category": "beauty",
-      "price": 32.99,
-      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
-      "image": "images/products/skin_supplements.jpg",
-      "stock": 45,
-      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
-    },
-    {
-      "id": 6,
-      "name": "Hip and Butt Booster",
-      "category": "beauty",
-      "price": 42.99,
-      "description": "Comprehensive hair health supplement with biotin, zinc, and other essential nutrients to support strong, healthy hair growth and reduce hair thinning.",
-      "image": "images/products/hip&butt_boost.jpg",
-      "stock": 35,
-      "benefits": ["Supports hair growth", "Reduces hair thinning", "Contains biotin and zinc", "Strengthens hair follicles"]
-    },
-    {
-      "id": 7,
-      "name": "Whey Protein Isolate",
-      "category": "supplements",
-      "price": 59.99,
-      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
-      "image": "images/products/upper_body.jpg",
-      "stock": 60,
-      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
-    },
-    {
-      "id": 8,
-      "name": "Pre-Workout Energizer",
+      "id": 2002,
+      "name": "Slimming Pills",
       "category": "supplements",
       "price": 44.99,
       "description": "Powerful pre-workout formula designed to increase energy, focus, and endurance during training. Contains caffeine, beta-alanine, and other performance-enhancing ingredients.",
@@ -81,29 +52,29 @@
       "benefits": ["Increases energy and focus", "Enhances endurance", "Improves performance", "Clinically effective ingredients"]
     },
     {
-      "id": 9,
-      "name": "Multivitamin Complex",
-      "category": "vitamins",
-      "price": 29.99,
-      "description": "Comprehensive multivitamin formula with essential vitamins and minerals to support overall health and wellbeing. Designed for optimal absorption and effectiveness.",
-      "image": "images/products/flat_tummy_tea.jpg",
-      "stock": 75,
-      "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
+      "id": 2003,
+      "name": "Upper Body Slimmer",
+      "category": "supplements",
+      "price": 59.99,
+      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "image": "images/products/upper_body.jpg",
+      "stock": 260,
+      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
     },
     {
-      "id": 10,
-      "name": "Vitamin D3 + K2",
-      "category": "vitamins",
-      "price": 24.99,
-      "description": "Advanced formula combining Vitamin D3 and K2 for optimal bone health, immune support, and cardiovascular function. Highly bioavailable form for maximum effectiveness.",
-      "image": "images/products/advanced_weightloss.jpg",
-      "stock": 50,
-      "benefits": ["Supports bone health", "Boosts immune system", "Cardiovascular support", "Highly bioavailable"]
+      "id": 2004,
+      "name": "Hip and Butt Booster",
+      "category": "supplements",
+      "price": 42.99,
+      "description": "Comprehensive hair health supplement with biotin, zinc, and other essential nutrients to support strong, healthy hair growth and reduce hair thinning.",
+      "image": "images/products/hip&butt_boost.jpg",
+      "stock": 35,
+      "benefits": ["Supports hair growth", "Reduces hair thinning", "Contains biotin and zinc", "Strengthens hair follicles"]
     },
     {
-      "id": 11,
+      "id": 2005,
       "name": "Resistance Bands Set",
-      "category": "fitness",
+      "category": "supplements",
       "price": 39.99,
       "description": "Premium set of 5 resistance bands with different tension levels. Perfect for home workouts, physical therapy, and strength training. Includes carrying bag and exercise guide.",
       "image": "images/products/breast&butt.jpg",
@@ -111,7 +82,38 @@
       "benefits": ["5 different tension levels", "Versatile for various exercises", "Portable and lightweight", "Includes exercise guide"]
     },
     {
-      "id": 12,
+      "id": 2006,
+      "name": "Skin Glow",
+      "category": "detox",
+      "price": 32.99,
+      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
+      "image": "images/products/skin_supplements.jpg",
+      "stock": 45,
+      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
+    },
+
+    {
+      "id": 4001,
+      "name": "Detox Tea",
+      "category": "detox",
+      "price": 39.99,
+      "description": "Specifically formulated to support ketogenic diet and accelerate fat burning. Contains exogenous ketones, MCT oil, and electrolytes to help your body transition into ketosis faster.",
+      "image": "images/products/detox_tea.jpg",
+      "stock": 25,
+      "benefits": ["Supports ketosis", "Reduces keto flu symptoms", "Accelerates fat burning", "Increases energy"]
+    },
+    {
+      "id": 4002,
+      "name": "Acne Soap",
+      "category": "detox",
+      "price": 49.99,
+      "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
+      "image": "images/products/acne_soap.jpg",
+      "stock": 30,
+      "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
+    },
+    {
+      "id": 5001,
       "name": "Yoga Mat Premium",
       "category": "fitness",
       "price": 49.99,

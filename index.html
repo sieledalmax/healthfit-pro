@@ -1035,7 +1035,7 @@
                 <li><a class="active" onclick="scrollToSection('weight-loss')">Weight Loss</a></li>
                 <li><a onclick="scrollToSection('supplements')">Supplements</a></li>
                 <li><a onclick="scrollToSection('baby-meals')">Baby Meals</a></li>
-                <li><a onclick="scrollToSection('vitamins')">Vitamins</a></li>
+                <li><a onclick="scrollToSection('detox')">Detox</a></li>
                 <li><a onclick="scrollToSection('fitness')">Fitness</a></li>
             </ul>
         </nav>
@@ -1084,12 +1084,12 @@
                 <div class="products-grid" id="BabyMealsGrid"></div>
             </div>
 
-            <!-- Vitamins Section -->
-            <div class="product-section" id="vitamins" style="display: none;">
+            <!-- Detox Section -->
+            <div class="product-section" id="detox" style="display: none;">
                 <div class="section-header">
-                    <h2 class="section-title">Vitamins</h2>
+                    <h2 class="section-title">Detox</h2>
                 </div>
-                <div class="products-grid" id="vitaminsGrid"></div>
+                <div class="products-grid" id="detoxGrid"></div>
             </div>
 
             <!-- Fitness Section -->
@@ -1116,7 +1116,7 @@
                         <li><a href="#weight-loss">Weight Loss</a></li>
                         <li><a href="#supplements">Supplements</a></li>
                         <li><a href="#baby-meals">Baby Meals</a></li>
-                        <li><a href="#vitamins">Vitamins</a></li>
+                        <li><a href="#detox">Detox</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1375,11 +1375,11 @@
             ? babyMealsProducts.map(product => createProductCard(product)).join('')
             : '<div class="empty-state"><h3>No baby meals available</h3></div>';
         
-        // Vitamins
-        const vitaminsGrid = document.getElementById('vitaminsGrid');
-        const vitaminsProducts = products.filter(p => p.category === 'vitamins');
-        vitaminsGrid.innerHTML = vitaminsProducts.length > 0 
-            ? vitaminsProducts.map(product => createProductCard(product)).join('')
+        // Detox
+        const detoxGrid = document.getElementById('detoxGrid');
+        const detoxProducts = products.filter(p => p.category === 'detox');
+        detoxGrid.innerHTML = detoxProducts.length > 0 
+            ? detoxProducts.map(product => createProductCard(product)).join('')
             : '<div class="empty-state"><h3>No vitamins available</h3></div>';
         
         // Fitness
