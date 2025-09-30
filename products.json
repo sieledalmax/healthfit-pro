@@ -12,7 +12,7 @@
     },
     {
       "id": 1002,
-      "name": "Advanved Weighloss Pills",
+      "name": "Advanced Weightloss Pills",
       "category": "weight-loss",
       "price": 44.99,
       "description": "Advanced formula combining Vitamin D3 and K2 for optimal bone health, immune support, and cardiovascular function. Highly bioavailable form for maximum effectiveness.",
@@ -30,10 +30,20 @@
       "stock": 75,
       "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
     },
-    
+
     {
       "id": 2001,
-      "name": "Butt Pills",
+      "name": "Hip and Butt Booster",
+      "category": "supplements",
+      "price": 42.99,
+      "description": "Comprehensive hair health supplement with biotin, zinc, and other essential nutrients to support strong, healthy hair growth and reduce hair thinning.",
+      "image": "images/products/hip&butt_boost.jpg",
+      "stock": 35,
+      "benefits": ["Supports hair growth", "Reduces hair thinning", "Contains biotin and zinc", "Strengthens hair follicles"]
+    },    
+    {
+      "id": 2002,
+      "name": "Butt Booster Pills",
       "category": "supplements",
       "price": 49.99,
       "description": "Powerful formula designed to enhance metabolic rate and promote fat loss. Contains clinically studied ingredients that help your body burn more calories throughout the day.",
@@ -42,7 +52,17 @@
       "benefits": ["Enhances metabolic rate", "Promotes fat loss", "Clinically studied ingredients", "All-day energy support"]
     },
     {
-      "id": 2002,
+      "id": 2003,
+      "name": "Breast and Butt",
+      "category": "supplements",
+      "price": 39.99,
+      "description": "Premium set of 5 resistance bands with different tension levels. Perfect for home workouts, physical therapy, and strength training. Includes carrying bag and exercise guide.",
+      "image": "images/products/breast&butt.jpg",
+      "stock": 30,
+      "benefits": ["5 different tension levels", "Versatile for various exercises", "Portable and lightweight", "Includes exercise guide"]
+    },
+    {
+      "id": 2004,
       "name": "Slimming Pills",
       "category": "supplements",
       "price": 44.99,
@@ -52,7 +72,7 @@
       "benefits": ["Increases energy and focus", "Enhances endurance", "Improves performance", "Clinically effective ingredients"]
     },
     {
-      "id": 2003,
+      "id": 2005,
       "name": "Upper Body Slimmer",
       "category": "supplements",
       "price": 59.99,
@@ -62,28 +82,8 @@
       "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
     },
     {
-      "id": 2004,
-      "name": "Hip and Butt Booster",
-      "category": "supplements",
-      "price": 42.99,
-      "description": "Comprehensive hair health supplement with biotin, zinc, and other essential nutrients to support strong, healthy hair growth and reduce hair thinning.",
-      "image": "images/products/hip&butt_boost.jpg",
-      "stock": 35,
-      "benefits": ["Supports hair growth", "Reduces hair thinning", "Contains biotin and zinc", "Strengthens hair follicles"]
-    },
-    {
-      "id": 2005,
-      "name": "Resistance Bands Set",
-      "category": "supplements",
-      "price": 39.99,
-      "description": "Premium set of 5 resistance bands with different tension levels. Perfect for home workouts, physical therapy, and strength training. Includes carrying bag and exercise guide.",
-      "image": "images/products/breast&butt.jpg",
-      "stock": 30,
-      "benefits": ["5 different tension levels", "Versatile for various exercises", "Portable and lightweight", "Includes exercise guide"]
-    },
-    {
-      "id": 2006,
-      "name": "Skin Glow",
+      "id": 4001,
+      "name": "Skin Glow Detox",
       "category": "detox",
       "price": 32.99,
       "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
@@ -93,8 +93,8 @@
     },
 
     {
-      "id": 4001,
-      "name": "Detox Tea",
+      "id": 4002,
+      "name": "Gut Detox Tea",
       "category": "detox",
       "price": 39.99,
       "description": "Specifically formulated to support ketogenic diet and accelerate fat burning. Contains exogenous ketones, MCT oil, and electrolytes to help your body transition into ketosis faster.",
@@ -103,7 +103,7 @@
       "benefits": ["Supports ketosis", "Reduces keto flu symptoms", "Accelerates fat burning", "Increases energy"]
     },
     {
-      "id": 4002,
+      "id": 4003,
       "name": "Acne Soap",
       "category": "detox",
       "price": 49.99,
