@@ -5,191 +5,187 @@
       "name": "Green Tea Fat Burner",
       "category": "weight-loss",
       "price": 49.99,
-      "description": "Advanced formula with natural extracts to boost metabolism and support weight management. Contains green tea extract, caffeine, and other natural ingredients that help increase energy expenditure and fat oxidation.",
+      "description": "Advanced thermogenic formula with potent green tea extract to boost metabolism and accelerate fat burning. Contains natural caffeine for energy and antioxidants for overall wellness.",
       "image": "images/products/slimming_tea.jpg",
       "stock": 50,
-      "benefits": ["Boosts metabolism", "Increases energy", "Supports fat burning", "Natural ingredients"]
+      "benefits": ["Boosts metabolism", "Increases fat burning", "Provides natural energy", "Rich in antioxidants"]
     },
     {
       "id": 1002,
       "name": "Advanced Weightloss Pills",
       "category": "weight-loss",
       "price": 44.99,
-      "description": "Advanced formula combining Vitamin D3 and K2 for optimal bone health, immune support, and cardiovascular function. Highly bioavailable form for maximum effectiveness.",
+      "description": "Comprehensive weight management formula designed to suppress appetite and block carbohydrate absorption. Helps control cravings and support sustainable weight loss.",
       "image": "images/products/advanced_weightloss.jpg",
       "stock": 50,
-      "benefits": ["Supports bone health", "Boosts immune system", "Cardiovascular support", "Highly bioavailable"]
+      "benefits": ["Suppresses appetite", "Blocks carb absorption", "Reduces cravings", "Supports metabolism"]
     },
     {
       "id": 1003,
       "name": "Flat Tummy Tea",
       "category": "weight-loss",
       "price": 35.99,
-      "description": "Comprehensive multivitamin formula with essential vitamins and minerals to support overall health and wellbeing. Designed for optimal absorption and effectiveness.",
+      "description": "Gentle herbal tea blend specifically formulated to reduce bloating and support digestive health. Natural ingredients help flatten the stomach and improve digestion.",
       "image": "images/products/flat_tummy_tea.jpg",
       "stock": 75,
-      "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
+      "benefits": ["Reduces bloating", "Supports digestion", "Natural herbal blend", "Calming effect"]
     },
     {
       "id": 1004,
       "name": "Weightloss Formula Capzules",
       "category": "weight-loss",
       "price": 54.99,
-      "description": "Comprehensive multivitamin formula with essential vitamins and minerals to support overall health and wellbeing. Designed for optimal absorption and effectiveness.",
+      "description": "Powerful weight loss capsules combining multiple fat-burning ingredients to maximize results. Designed to target stubborn fat areas and boost energy levels.",
       "image": "images/products/weight_loss_formula.jpg",
       "stock": 75,
-      "benefits": ["Supports overall health", "Essential vitamins and minerals", "Optimal absorption", "Daily wellness support"]
+      "benefits": ["Targets stubborn fat", "Multiple fat burners", "Increases energy", "Accelerates results"]
     },
-
     {
       "id": 2001,
       "name": "Hip and Butt Booster",
       "category": "supplements",
       "price": 42.99,
-      "description": "Comprehensive hair health supplement with biotin, zinc, and other essential nutrients to support strong, healthy hair growth and reduce hair thinning.",
+      "description": "Specialized formula designed to enhance curves and support growth in hip and butt areas. Contains natural ingredients that help shape and define your lower body.",
       "image": "images/products/hip&butt_boost.jpg",
       "stock": 35,
-      "benefits": ["Supports hair growth", "Reduces hair thinning", "Contains biotin and zinc", "Strengthens hair follicles"]
-    },    
+      "benefits": ["Enhances curves", "Supports growth", "Natural ingredients", "Shapes lower body"]
+    },
     {
       "id": 2002,
       "name": "Butt Booster Pills",
       "category": "supplements",
       "price": 49.99,
-      "description": "Powerful formula designed to enhance metabolic rate and promote fat loss. Contains clinically studied ingredients that help your body burn more calories throughout the day.",
+      "description": "Advanced supplement specifically formulated to support butt enhancement through natural means. Helps improve muscle tone and shape in the gluteal area.",
       "image": "images/products/butt_pills.jpg",
       "stock": 140,
-      "benefits": ["Enhances metabolic rate", "Promotes fat loss", "Clinically studied ingredients", "All-day energy support"]
+      "benefits": ["Enhances glute shape", "Improves muscle tone", "Natural formula", "Targeted results"]
     },
     {
       "id": 2003,
       "name": "Breast and Butt",
       "category": "supplements",
       "price": 39.99,
-      "description": "Premium set of 5 resistance bands with different tension levels. Perfect for home workouts, physical therapy, and strength training. Includes carrying bag and exercise guide.",
+      "description": "Dual-action supplement designed to support enhancement in both breast and butt areas. Formulated with natural herbs known for their curve-enhancing properties.",
       "image": "images/products/breast&butt.jpg",
       "stock": 30,
-      "benefits": ["5 different tension levels", "Versatile for various exercises", "Portable and lightweight", "Includes exercise guide"]
+      "benefits": ["Dual action formula", "Natural herbs", "Enhances curves", "Balanced enhancement"]
     },
     {
       "id": 2004,
       "name": "Slimming Pills",
       "category": "supplements",
       "price": 44.99,
-      "description": "Powerful pre-workout formula designed to increase energy, focus, and endurance during training. Contains caffeine, beta-alanine, and other performance-enhancing ingredients.",
+      "description": "Comprehensive slimming supplement that helps reduce body fat while preserving lean muscle. Supports overall body shaping and contouring goals.",
       "image": "images/products/slim_bomb.jpg",
       "stock": 40,
-      "benefits": ["Increases energy and focus", "Enhances endurance", "Improves performance", "Clinically effective ingredients"]
+      "benefits": ["Reduces body fat", "Preserves muscle", "Body contouring", "Overall slimming"]
     },
     {
       "id": 2005,
       "name": "Upper Body Slimmer",
       "category": "supplements",
       "price": 59.99,
-      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "description": "Targeted formula designed to reduce excess fat in the upper body areas including arms, back, and waist. Helps create balanced body proportions.",
       "image": "images/products/upper_body.jpg",
       "stock": 260,
-      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+      "benefits": ["Targets upper body", "Reduces arm fat", "Slims waist", "Balances proportions"]
     },
     {
       "id": 2006,
       "name": "Pre Workout Supplements",
       "category": "supplements",
       "price": 39.99,
-      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "description": "Energy-boosting pre-workout formula designed to enhance exercise performance, increase focus, and improve endurance during training sessions.",
       "image": "images/products/pre_workout_supp.jpg",
       "stock": 260,
-      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+      "benefits": ["Boosts energy", "Enhances focus", "Improves endurance", "Maximizes workouts"]
     },
-
     {
       "id": 3001,
       "name": "Milk Booster",
       "category": "baby-meals",
       "price": 32.99,
-      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
+      "description": "Natural lactation supplement designed to support and increase breast milk production. Formulated with galactagogue herbs safe for nursing mothers.",
       "image": "images/products/add_milk.jpg",
       "stock": 45,
-      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
+      "benefits": ["Increases milk supply", "Natural herbs", "Safe for nursing", "Supports lactation"]
     },
     {
       "id": 3002,
       "name": "Follow on Milk",
       "category": "baby-meals",
       "price": 32.99,
-      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
+      "description": "Nutritionally complete follow-on milk formula for babies 6-12 months. Provides essential nutrients for continued growth and development.",
       "image": "images/products/follow_on_milk.jpg",
       "stock": 45,
-      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
+      "benefits": ["Complete nutrition", "Supports growth", "Essential nutrients", "Age-appropriate formula"]
     },
-    
     {
       "id": 4001,
       "name": "Skin Glow Detox",
       "category": "detox",
       "price": 32.99,
-      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
+      "description": "Internal cleansing formula designed to promote radiant skin from within. Helps eliminate toxins that can cause dullness and skin imperfections.",
       "image": "images/products/skin_supplements.jpg",
       "stock": 45,
-      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
+      "benefits": ["Promotes radiant skin", "Eliminates toxins", "Reduces dullness", "Internal cleansing"]
     },
     {
       "id": 4002,
       "name": "Gut Detox Tea",
       "category": "detox",
       "price": 39.99,
-      "description": "Specifically formulated to support ketogenic diet and accelerate fat burning. Contains exogenous ketones, MCT oil, and electrolytes to help your body transition into ketosis faster.",
+      "description": "Gentle herbal tea blend specifically formulated to support digestive system cleansing and promote healthy gut function and regularity.",
       "image": "images/products/detox_tea.jpg",
       "stock": 25,
-      "benefits": ["Supports ketosis", "Reduces keto flu symptoms", "Accelerates fat burning", "Increases energy"]
+      "benefits": ["Cleanses digestive system", "Supports gut health", "Promotes regularity", "Gentle herbal blend"]
     },
     {
       "id": 4003,
       "name": "Womb Detox Tea",
       "category": "detox",
       "price": 49.99,
-      "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
+      "description": "Specialized herbal blend designed to support female reproductive health and hormonal balance through gentle, natural cleansing.",
       "image": "images/products/womb_detox.jpg",
       "stock": 30,
-      "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
+      "benefits": ["Supports reproductive health", "Hormonal balance", "Female wellness", "Natural cleansing"]
     },
     {
       "id": 4004,
       "name": "Acne Soap",
       "category": "detox",
       "price": 19.99,
-      "description": "Premium collagen supplement that supports skin elasticity, hydration, and overall skin health. Formulated with hyaluronic acid and vitamins for radiant, youthful-looking skin.",
+      "description": "Natural cleansing soap formulated with detoxifying ingredients to help clear acne and improve skin complexion through deep pore cleansing.",
       "image": "images/products/acne_soap.jpg",
       "stock": 30,
-      "benefits": ["Improves skin elasticity", "Enhances skin hydration", "Promotes youthful appearance", "Contains hyaluronic acid"]
+      "benefits": ["Clears acne", "Deep pore cleansing", "Improves complexion", "Natural ingredients"]
     },
     {
       "id": 4005,
       "name": "Body Slimmer Detox",
       "category": "detox",
       "price": 39.99,
-      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "description": "Comprehensive detox program designed to support weight loss by eliminating toxins and reducing water retention for a slimmer appearance.",
       "image": "images/products/slim_body_detox.jpg",
       "stock": 260,
-      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+      "benefits": ["Eliminates toxins", "Reduces water retention", "Supports weight loss", "Slimming effect"]
     },
     {
       "id": 4006,
       "name": "Herbal Detox Tea",
       "category": "detox",
       "price": 39.99,
-      "description": "Premium whey protein isolate with 25g of protein per serving. Low in carbs and fat, perfect for muscle recovery and growth. Mixes easily with water or milk.",
+      "description": "Traditional herbal tea blend designed for full-body cleansing and detoxification. Supports natural elimination processes and overall wellness.",
       "image": "images/products/tamara_herbal.jpg",
       "stock": 260,
-      "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
+      "benefits": ["Full-body cleansing", "Supports elimination", "Traditional herbs", "Overall wellness"]
     },
-
     {
       "id": 5001,
       "name": "Yoga Mat Premium",
       "category": "fitness",
       "price": 49.99,
-      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap.",
       "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       "stock": 25,
       "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
@@ -199,30 +195,30 @@
       "name": "Creatine",
       "category": "fitness",
       "price": 39.99,
-      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "description": "Pure creatine monohydrate powder designed to enhance strength, increase muscle mass, and improve exercise performance during high-intensity training.",
       "image": "images/products/creatine.jpg",
       "stock": 25,
-      "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
+      "benefits": ["Increases strength", "Builds muscle mass", "Improves performance", "Pure creatine"]
     },
     {
       "id": 5003,
       "name": "Muscle Tech",
       "category": "fitness",
       "price": 34.99,
-      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "description": "Advanced muscle building formula designed to support rapid muscle growth, enhance recovery, and improve overall athletic performance.",
       "image": "images/products/muscle_tech.jpg",
       "stock": 25,
-      "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
+      "benefits": ["Supports muscle growth", "Enhances recovery", "Improves performance", "Advanced formula"]
     },
     {
-      "id": 5001,
+      "id": 5004,
       "name": "Amino Acid",
       "category": "fitness",
       "price": 27.99,
-      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "description": "Essential amino acid supplement designed to support muscle recovery, reduce muscle soreness, and promote protein synthesis after workouts.",
       "image": "images/products/beef_amino.jpg",
       "stock": 25,
-      "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
+      "benefits": ["Supports recovery", "Reduces soreness", "Promotes protein synthesis", "Essential aminos"]
     }
   ]
 }
