@@ -101,6 +101,27 @@
       "stock": 260,
       "benefits": ["25g protein per serving", "Supports muscle recovery", "Low in carbs and fat", "Easy to mix"]
     },
+
+    {
+      "id": 3001,
+      "name": "Milk Booster",
+      "category": "baby-meals",
+      "price": 32.99,
+      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
+      "image": "images/products/add_milk.jpg",
+      "stock": 45,
+      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
+    },
+    {
+      "id": 3002,
+      "name": "Follow on Milk",
+      "category": "baby-meals",
+      "price": 32.99,
+      "description": "Advanced formula with antioxidants and essential nutrients to promote healthy, glowing skin from within. Helps combat signs of aging and environmental damage.",
+      "image": "images/products/follow_on_milk.jpg",
+      "stock": 45,
+      "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
+    },
     
     {
       "id": 4001,
@@ -112,7 +133,6 @@
       "stock": 45,
       "benefits": ["Promotes healthy skin", "Rich in antioxidants", "Combats signs of aging", "Natural ingredients"]
     },
-
     {
       "id": 4002,
       "name": "Gut Detox Tea",
@@ -171,6 +191,36 @@
       "price": 49.99,
       "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
       "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "stock": 25,
+      "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
+    },
+    {
+      "id": 5002,
+      "name": "Creatine",
+      "category": "fitness",
+      "price": 39.99,
+      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "image": "images/products/creatine.jpg",
+      "stock": 25,
+      "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
+    },
+    {
+      "id": 5003,
+      "name": "Muscle Tech",
+      "category": "fitness",
+      "price": 34.99,
+      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "image": "images/products/muscle_tech.jpg",
+      "stock": 25,
+      "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
+    },
+    {
+      "id": 5001,
+      "name": "Amino Acid",
+      "category": "fitness",
+      "price": 27.99,
+      "description": "High-quality non-slip yoga mat with extra cushioning for comfort during yoga, pilates, and floor exercises. Eco-friendly material with carrying strap included.",
+      "image": "images/products/beef_amino.jpg",
       "stock": 25,
       "benefits": ["Non-slip surface", "Extra cushioning", "Eco-friendly material", "Includes carrying strap"]
     }
